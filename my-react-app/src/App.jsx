@@ -1,4 +1,5 @@
 import { Navbar } from "./header/Navbar";
+import { Menu } from "./header/Menu";
 import { Klist } from "./list/Klist";
 import { Llist } from "./list/Llist";
 
@@ -6,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <h1>Hello World!</h1>
+      <Menu />
       <Klist />
       <Llist />
     </>
