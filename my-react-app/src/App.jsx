@@ -1,11 +1,15 @@
 import { Navbar } from "./header/Navbar";
+import { Klist } from "./list/Klist";
+import { Llist } from "./list/Llist";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
       <h1>Hello World!</h1>
-    </div>
+      <Klist />
+      <Llist />
+    </>
   );
 }
 
