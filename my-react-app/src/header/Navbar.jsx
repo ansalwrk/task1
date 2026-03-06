@@ -15,7 +15,14 @@ export const Navbar = () => {
     padding: "10px 0",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    scroll: "fixed",
+    zIndex: 1000,
+ 
+
+
+
+
   }}
 >
 <img
@@ -47,31 +54,17 @@ export const Navbar = () => {
     fontSize: "14px",
     cursor: "pointer",
     padding: "8px 12px"
- 
     }}
     >
-
-
-<button
-  style={{
-    background: "transparent",
-    color: "white",
-    border: "none",
-    fontSize: "14px",
-    cursor: "pointer",
-    padding: "8px 12px"
-  }}
->
-  What is AIS140?
-</button>
-
-
 
 </button>
 
     
 
-  <button className="nav-btn">What is AIS140?</button>
+
+
+
+
   <button className="nav-btn">Features</button>
   <button className="nav-btn">Benefits</button>
   <button className="nav-btn">Industries</button>
@@ -79,8 +72,6 @@ export const Navbar = () => {
   <button className="nav-btn">Pricing</button>
   <li>+91 98765 43210</li>
   <li>
-
-
 
 
 

@@ -12,7 +12,7 @@ function App() {
       <Home />
       <Klist />
       <Llist />
-      <p className='display-5'>we can type here too</p>
+      <p className='display-5'>we can type her</p>
     </>
   );
 }
