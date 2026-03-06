@@ -8,6 +8,7 @@ export const Navbar = () => {
     position: "fixed",
     top: 0,
     width: "100%",
+    borderBlockEnd:"white",
     height:"81px",
     backgroundColor: "#000000",
     color: "white",
