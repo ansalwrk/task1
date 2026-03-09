@@ -36,40 +36,56 @@ export const Home = () => {
 
 
 
-    <div className="home-box1">
-  <button
-    style={{
-      position:"absolute",
-      backgroundColor: "#b3390023",
-      color: "#ff5100",
-      padding: "10px 20px",
-      cursor: "pointer",
-      fontSize: "100%",
-      borderRadius: "20px",
-      marginTop: "-12.5%",
-      marginLeft: "70px",
-      fontStyle: "revert,",
-      fontWeight: "bolder",
-      borderColor: "#ff5100",
-    }}
-  >
-Government Certified AIS 140 Devices
-  </button>
-</div>
+      <div className="home-box1">
+    <button
+      style={{
+        position:"absolute",
+        backgroundColor: "#b3390023",
+        color: "#ff5100",
+        padding: "10px 20px",
+        cursor: "pointer",
+        fontSize: "100%",
+        borderRadius: "20px",
+        marginTop: "-12.5%",
+        marginLeft: "70px",
+        fontStyle: "revert,",
+        fontWeight: "bolder",
+        borderColor: "#ff5100",
+      }}
+    >
+  Government Certified AIS 140 Devices
+    </button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <head-text1
     style={{
         position: "absolute",
-        color: "white",
-        fontSize: "60px",
+
+        fontSize: "130%",
         fontWeight: "bold",
         marginTop: "-7%",
-        marginLeft: "4%",
-        width: "550px",
-        
+        marginLeft: "4%",     
     }}
->
-    AIS140 GPS Tracker
+> 
+  <span
+>    
+           <h1 style={{ color: "white", }}>AIS140 GPS Tracker for</h1>
+            <h1 style={{ color: "#f04e03", }}>Government-Compliant </h1>  
+            <h1 style={{ color: "white" }}>Vehicle Tracking</h1>
+      </span>
+
 </head-text1>
 
 <head-text2
@@ -83,67 +99,9 @@ Government Certified AIS 140 Devices
         width: "500px",
     }}
 >
-    for
+  
 </head-text2>
     
-
-    <head-text3
-    style={{
-        position: "absolute",
-        color: "#ff5100",
-        fontSize: "60px",
-        fontWeight: "bold",
-        marginTop: "-3%",
-        marginLeft: "12%",
-        width: "500px",
-    }}
->
-    Government-
-</head-text3>
-
-<head-text4
-    style={{
-        position: "absolute",
-        color: "#ff5100",
-        fontSize: "60px",
-        fontWeight: "bold",
-        marginTop: "1%",
-        marginLeft: "4%",
-        width: "500px",
-        
-    }}
->
-    Compliant 
-</head-text4>
-
-<head-text5
-    style={{
-        position: "absolute",
-        color: "#ffffff",
-        fontSize: "60px",
-        fontWeight: "bold",
-        marginTop: "1%",
-        marginLeft: "23%",
-        width: "500px",
-        
-    }}
->
-    Vehicle
-</head-text5>
-<head-text5
-    style={{
-        position: "absolute",
-        color: "#ffffff",
-        fontSize: "60px",
-        fontWeight: "bold",
-        marginTop: "6%",
-        marginLeft: "4%",
-        width: "500px",
-        
-    }}
->
-    Tracking
-</head-text5>
 
 <head-textp
     style={{
@@ -269,20 +227,78 @@ Government Certified AIS 140 Devices
     marginTop: "30%",
     marginLeft: "5%",
     display: "flex",
-
+    alignItems: "center",
+    gap: "30px"
   }}
 >
-  <span style={{ color: "rgb(255, 81, 0)", fontStyle:"revert-layer", fontSize: "10px", fontWeight: "bolder",textAlign: "center", }}>
-   <h1>  500+ </h1> <h6>Fleet Partners</h6> 
+  <span
+    style={{
+      color: "rgb(255, 81, 0)",
+      fontSize: "10px",
+      textAlign: "center",
+    }}
+  >
+    <h1>500+</h1>
+    <h6 style={{ color: "white" }}>Fleet Partners</h6>
   </span>
 
-  <span style={{ color: "rgb(255, 81, 0)", fontSize: "10px", fontWeight:"bolder", marginLeft: "8px" }}>
 
-    <h1> |  50K+  | </h1>
+
+
+      <span
+    style={{
+      color: "rgb(255, 81, 0)",
+      fontSize: "px",
+      fontWeight:"lighter",
+      textAlign: "center",
+    }}
+  >
+    <h2 style={{ color: "#ffffff6c" , fontWeight:"lighter",}}>|</h2>
   </span>
 
-  <span style={{ color: "rgb(255, 81, 0)", fontSize: "10px", fontWeight:"bolder", marginLeft: "8px" }}>
-    <h1> 99.9% </h1>
+
+
+
+
+  <span
+    style={{
+      color: "rgb(255, 81, 0)",
+      fontSize: "10px",
+      fontWeight: "bolder",
+      textAlign: "center",
+    }}
+  >
+    <h1>50K+</h1>
+    <h6 style={{ color: "white",fontWeight:"lighter" }}>Devices Installed</h6>
+  </span>
+
+
+
+
+
+<span
+    style={{
+      color: "rgb(255, 81, 0)",
+      fontSize: "px",
+      fontWeight:"lighter",
+      textAlign: "center",
+    }}
+  >
+    <h2 style={{ color: "#ffffff6c" , fontWeight:"lighter",}}>|</h2>
+  </span>
+
+
+
+  <span
+    style={{
+      color: "rgb(255, 81, 0)",
+      fontSize: "10px",
+      fontWeight: "bolder",
+      textAlign: "center",
+    }}
+  >
+    <h1>99.9%</h1>
+    <h6 style={{ color: "white" }}>Uptime</h6>
   </span>
 </div>
 
