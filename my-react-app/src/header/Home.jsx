@@ -224,7 +224,7 @@ export const Home = () => {
 <div
   style={{
     position: "absolute",
-    marginTop: "30%",
+    marginTop: "29%",
     marginLeft: "5%",
     display: "flex",
     alignItems: "center",
@@ -307,21 +307,6 @@ export const Home = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </>
-
-
   );
 };
