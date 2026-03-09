@@ -1,4 +1,4 @@
-export const Llist = () => {
+export const Screen2 = () => {
   return (
 
     

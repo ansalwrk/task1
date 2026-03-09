@@ -83,7 +83,8 @@ export const Navbar = () => {
       border: "none",
       padding: "10px 20px",
       cursor: "pointer",
-      fontSize: "15px",
+      fontSize: "160%",
+
     }}
   >
 

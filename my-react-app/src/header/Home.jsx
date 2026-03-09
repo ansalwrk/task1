@@ -1,4 +1,5 @@
 import hero from "../assets/hero-bg.jpg";
+import gps1 from "../assets/gps1.png";
 export const Home = () => {
   return (
 
@@ -13,9 +14,9 @@ export const Home = () => {
   alt="hero-bg.jpg"
   style={{
     position: "absolute",
-    height:"87%",
+    height:"90%",
     width: "100%",
-    marginTop: "-135px",
+    marginTop: "-13%",
 
 
   }}
@@ -25,7 +26,7 @@ export const Home = () => {
     style={{
         position: "absolute",
         backgroundColor: "#000000cc",
-        marginTop: "-135px",
+        marginTop: "-13%",
         height:"100%",
         width: "100%",
 
@@ -43,9 +44,9 @@ export const Home = () => {
       color: "#ff5100",
       padding: "10px 20px",
       cursor: "pointer",
-      fontSize: "13px",
+      fontSize: "100%",
       borderRadius: "20px",
-      marginTop: "-133px",
+      marginTop: "-12.5%",
       marginLeft: "70px",
       fontStyle: "revert,",
       fontWeight: "bolder",
@@ -122,7 +123,7 @@ Government Certified AIS 140 Devices
         fontSize: "60px",
         fontWeight: "bold",
         marginTop: "1%",
-        marginLeft: "27%",
+        marginLeft: "23%",
         width: "500px",
         
     }}
@@ -208,13 +209,82 @@ Government Certified AIS 140 Devices
 
 
 
+<div className="gps1">
+
+  <img
+    src={gps1}
+    alt="gps1"
+    style={{
+      position: "absolute",
+      marginTop: "-10%",
+      marginLeft: "55%",
+      height:"65",
+      width: "35%",
+      animation: "floatBeat 4s ease-in-out infinite",
+      filter: "drop-shadow(0 0 10px #ff9305e0) drop-shadow(0 0 20px #ff9305e0)"
+    }}
+  />
+
+  <style>
+    {`
+      @keyframes floatBeat {
+        0% {
+          transform: translateY(0px) scale(1);
+          filter: drop-shadow(0 0 10px ##ff9305e0);
+        }
+
+        25% {
+          transform: translateY(-10px) scale(1.03);
+          filter: drop-shadow(0 0 15px #ff9305e0);
+        }
+
+        50% {
+          transform: translateY(-15px) scale(1.06);
+          filter: drop-shadow(0 0 25px #ff9305e0);
+        }
+
+        75% {
+          transform: translateY(-10px) scale(1.03);
+          filter: drop-shadow(0 0 15px #ff9305e0);
+        }
+
+        100% {
+          transform: translateY(0px) scale(1);
+          filter: drop-shadow(0 0 10px #ff9305e0);
+        }
+      }
+    `}
+  </style>
+
+</div>
 
 
 
 
 
 
+<div
+  style={{
+    position: "absolute",
+    marginTop: "30%",
+    marginLeft: "5%",
+    display: "flex",
 
+  }}
+>
+  <span style={{ color: "rgb(255, 81, 0)", fontStyle:"revert-layer", fontSize: "10px", fontWeight: "bolder",textAlign: "center", }}>
+   <h1>  500+ </h1> <h6>Fleet Partners</h6> 
+  </span>
+
+  <span style={{ color: "rgb(255, 81, 0)", fontSize: "10px", fontWeight:"bolder", marginLeft: "8px" }}>
+
+    <h1> |  50K+  | </h1>
+  </span>
+
+  <span style={{ color: "rgb(255, 81, 0)", fontSize: "10px", fontWeight:"bolder", marginLeft: "8px" }}>
+    <h1> 99.9% </h1>
+  </span>
+</div>
 
 
 
