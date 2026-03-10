@@ -1,7 +1,32 @@
+import screen2 from "../assets/screen2.png";
 export const Screen1 = () => {
   return (
   
 <>
+
+<div
+  className="screen2"
+  style={{
+    backgroundColor: "#ff0000fa",
+    padding: "20px",
+    position: "absolute",
+    width: "30%",
+    height: "30%"
+  }}
+>
+  <img
+    src={screen2}
+    alt="screen2.png"
+    style={{
+      position: "absolute",
+      height: "90%",
+      width: "100%",
+      marginTop: "-2",
+    }}
+  />
+</div>
+
+
 
 
 <div className="screen1-box1">
@@ -35,6 +60,8 @@ Government Mandate
     marginTop:"45%",
     marginLeft:"4%",
     color: "white",
+    fontFamily: "Helvetica, Arial, sans-serif",
+
 
   }}
 
@@ -44,22 +71,22 @@ Government Mandate
 </div>
 
 
-<div className="2nd-heading">
-  <h1
+<div className="2nd-p">
+  <p
   style={{
     position:"absolute",
-    fontSize:"100%",
-    marginTop:"30%",
-    marginLeft:"4%",
-    color: "white",
+    marginTop:"55%",
+    marginLeft:"5%",
+    fontWeight:"lighter",
+    color: "#ffffffb7",
+    width:"51%",
+    fontFamily: "Helvetica, Arial, sans-serif",
 
   }}
 
   >
- AIS 140 is an Indian government-mandated standard for vehicle tracking systems, issued by the Automotive Industry Standards Committee (AISC). It ensures real-time vehicle monitoring, emergency response, and passenger safety, especially for public and commercial vehicles.
-
-An AIS140 GPS tracker integrates location tracking, emergency alerts, and secure data transmission to approved servers, helping fleet owners and transport authorities maintain compliance and safety.
- </h1>
+<p class="fs-5"> <p class="fst-normal">AIS 140 is an Indian government-mandated standard for vehicle tracking <br/>systems, issued by the Automotive Industry Standards Committee (AISC). <br/>It ensures real-time vehicle monitoring, emergency response, and<br/> passenger safety, especially for public and commercial vehicles.</p>
+</p></p>
 </div>
 
 
