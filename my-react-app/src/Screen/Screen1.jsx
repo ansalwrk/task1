@@ -1,3 +1,4 @@
+import React from "react";
 import screen2 from "../assets/screen2.png";
 
 export const Screen1 = () => {
@@ -7,94 +8,116 @@ export const Screen1 = () => {
         className="screen1full"
         style={{
           display: "flex",
+          flexDirection: "row", // Side-by-side layout
+          alignItems: "center",
+          justifyContent: "space-between",
+          minHeight: "100vh",
+          width: "100%",
+          backgroundColor: "#000000",
+          padding: "5%",
+          boxSizing: "border-box",
+          flexWrap: "wrap"
         }}
       >
+        <div 
+          className="content-left" 
+          style={{ 
+            flex: "1", 
+            minWidth: "300px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px" 
+          }}
+        >
+          <div className="screen1-box1">
+            <button
+              style={{
+                backgroundColor: "#b3390023",
+                color: "#ff5100",
+                padding: "10px 20px",
+                cursor: "pointer",
+                fontSize: "14px",
+                borderRadius: "20px",
+                fontWeight: "bolder",
+                border: "1px solid #ff5100",
+              }}
+            >
+              Government Mandate
+            </button>
+          </div>
 
-        <div className="screen1-box1">
-          <button
-            style={{
-              position: "absolute",
-              backgroundColor: "#b3390023",
-              color: "#ff5100",
-              padding: "10px 20px",
-              cursor: "pointer",
-              fontSize: "75%",
-              borderRadius: "20px",
-              marginTop: "40%",
-              marginLeft: "4%",
-              fontStyle: "revert",
-              fontWeight: "bolder",
-              borderColor: "#ff5100",
-            }}
-          >
-            Government Mandate
-          </button>
+          <div className="2nd-heading">
+            <h1
+              style={{
+                fontSize: "2.5rem",
+                color: "white",
+                margin: 0,
+                fontFamily: "Helvetica, Arial, sans-serif",
+                lineHeight: "1.2"
+              }}
+            >
+              What is the AIS140 GPS Tracking <br /> System?
+            </h1>
+          </div>
+
+          <div className="2nd-p">
+            <p
+              style={{
+                fontWeight: "lighter",
+                color: "#ffffffb7", // Adjusted color to be visible on dark bg
+                maxWidth: "90%",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                lineHeight: "1.6",
+                margin: 0
+              }}
+            >
+              AIS 140 is an Indian government-mandated standard for vehicle tracking<br/>
+              systems, issued by the Automotive Industry Standards Committee (AISC).<br/>
+              It ensures real-time vehicle monitoring, emergency response, and<br/>
+              passenger safety, especially for public and commercial vehicles.<br/>
+              <br/>
+              An AIS140 GPS tracker integrates location tracking, emergency alerts, and<br/>
+              secure data transmission to approved servers, helping fleet owners and<br/>
+              transport authorities maintain compliance and safety.<br/>
+            </p>
+          </div>
         </div>
 
-
-        <div className="2nd-heading">
-          <h1
-            style={{
-              position: "absolute",
-              fontSize: "250%",
-              marginTop: "45%",
-              marginLeft: "4%",
-              color: "white",
-              fontFamily: "Helvetica, Arial, sans-serif",
-            }}
-          >
-            What is the AIS140 GPS Tracking <br />System?
-          </h1>
-        </div>
-
-
-        <div className="2nd-p">
-          <p
-            style={{
-              position: "absolute",
-              marginTop: "55%",
-              marginLeft: "5%",
-              fontWeight: "lighter",
-              color: "#ffffffb7",
-              width: "51%",
-              fontFamily: "Helvetica, Arial, sans-serif",
-            }}
-            className="fs-5 fst-normal"
-          >
-            AIS 140 is an Indian government-mandated standard for vehicle tracking
-            <br />systems, issued by the Automotive Industry Standards Committee (AISC).
-            <br />It ensures real-time vehicle monitoring, emergency response, and
-            <br /> passenger safety, especially for public and commercial vehicles.
-          </p>
-        </div>
-
-
+        {/* Right Side: Image Container */}
         <div
           className="screen2"
           style={{
+            flex: "1",
             display: "flex",
-            backgroundColor: "#ff0000fa",
-            padding: "1%",
-            position: "absolute",
-            marginTop: "45%",
-            marginLeft: "58%",
             justifyContent: "center",
             alignItems: "center",
-            width: "40%",
-            height: "60%",
+            minWidth: "30px",
+            padding: "0px"
           }}
         >
-          <img
-            src={screen2}
-            alt="screen2.png"
-            style={{
-              height: "90%",
-              width: "90%",
-              objectFit: "contain",
-            }}
-          />
-        </div>
+          <div style={{
+            backgroundColor: "#292929fa",
+            padding: "20px",
+            borderRadius: "15px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            maxWidth: "500px"
+          }}>
+            <img
+              src={screen2}
+              alt="screen2"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </div>
 
+        
+        </div>
       </div>
     </>
   );
