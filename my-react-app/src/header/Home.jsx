@@ -7,8 +7,13 @@ export const Home = () => {
 <>
 
 
+<div className="homebg"
 
-
+style={{
+  display:"flex",
+  marginTop:"0"
+}}
+>
 <img
   src={hero}
   alt="hero-bg.jpg"
@@ -16,7 +21,7 @@ export const Home = () => {
     position: "absolute",
     height:"90%",
     width: "100%",
-    marginTop: "-13%",
+    marginTop: "0",
 
 
   }}
@@ -26,7 +31,7 @@ export const Home = () => {
     style={{
         position: "absolute",
         backgroundColor: "#000000cc",
-        marginTop: "-13%",
+        marginTop: "0",
         height:"100%",
         width: "100%",
 
@@ -34,7 +39,7 @@ export const Home = () => {
 
 />
 
-
+</div>
 
       <div className="home-box1">
     <button

@@ -1,6 +1,5 @@
-import { Home } from "./header/Home";
 import { Navbar } from "./header/Navbar";
-
+import { Home } from "./header/Home";
 import { Screen2 } from "./Screen/Screen2";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Screen1 } from "./Screen/Screen1";
@@ -9,6 +8,7 @@ function App() {
   return (
     
     <>
+      
       <Navbar />
       <Home />
       <Screen1 />
