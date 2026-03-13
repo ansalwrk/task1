@@ -59,6 +59,13 @@ export const Screen1 = () => {
               What is the AIS140 GPS Tracking <br /> System?
             </h1>
           </div>
+    <div class="grid grid-flow-col grid-rows-3 gap-4">
+
+
+
+
+       <div class="row-span-3 ...">
+              
 
           <div className="2nd-p">
             <p
@@ -82,15 +89,20 @@ export const Screen1 = () => {
             </p>
           </div>
         </div>
+      </div>
 
+
+
+
+
+      <div class="col-span-2 ...">
         {/* Right Side: Image Container */}
         <div
           className="screen2"
           style={{
             flex: "1",
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+
             minWidth: "30px",
             padding: "0px"
           }}
@@ -113,10 +125,44 @@ export const Screen1 = () => {
                 height: "auto",
                 objectFit: "contain",
               }}
+              
             />
+      </div>    
+
+
+
+
+
+
+            
+            <div className="round-btn" styel={{
+              justifyContent: "",
+
+            }}>
+              <button style={{ backgroundColor: "#55555531", color: "white", padding: "15px 30px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", fontSize: "18px" }}>
+                 Talk to Expert
+              </button>
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
 
-        
         </div>
       </div>
     </>

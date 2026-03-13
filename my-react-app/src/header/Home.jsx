@@ -82,12 +82,41 @@ export const Home = () => {
             }}>
               Government Certified AIS 140 Devices
             </div>
-            
-            <h1 className="hero-h1" style={{ color: "white", fontSize: "3rem", lineHeight: "1.1", margin: 0 }}>AIS140 GPS Tracker for</h1>
-            <h1 className="hero-h1" style={{ color: "#f04e03", fontSize: "3rem", lineHeight: "1.1", margin: 0 }}>Government-Compliant</h1>
-            <h1 className="hero-h1" style={{ color: "white", fontSize: "3rem", lineHeight: "1.1", margin: 0 }}>Vehicle Tracking</h1>
 
-            <p className="hero-p" style={{ color: "#ffffffb2", fontSize: "1.1rem", margin: "20px 0", maxWidth: "500px" }}>
+            <h1>
+            <span className="hero-h1" style={{ 
+              color: "white", 
+              fontSize: "3rem", 
+              lineHeight: "1.1", 
+              margin: 0 }}
+              >AIS140 GPS Tracker for</span>
+
+            <span className="hero-h1" 
+            style={{ color: "white", 
+            fontSize: "3rem", 
+            lineHeight: "1.1", 
+            margin: 0 }}></span>
+            <span className="hero-h1" 
+            style={{ color: "#f04e03", 
+            fontSize: "3rem", 
+            lineHeight: "1.1", 
+            margin: 0 }}
+            > Government-Compliant</span>
+
+            <span className="hero-h1" 
+            style={{ color: "white", 
+            fontSize: "3rem", 
+            lineHeight: "1.1", 
+            margin: 0 }}
+            >Vehicle Tracking</span>
+            </h1>
+             
+
+            <p className="hero-p" 
+            style={{ color: "#ffffffb2", 
+            fontSize: "1.1rem", 
+            margin: "20px 0", 
+            maxWidth: "500px" }}>
               Ensure AIS140 compliance with a reliable GPS tracking solution designed for public transport, commercial fleets, and regulated vehicles.
             </p>
 

@@ -61,6 +61,7 @@ export const Navbar = () => {
         boxSizing: "border-box"
         }}
       >
+        <div className="flex-justify-"></div>
         <img src={gpsLogo} alt="Logo" style={{ height: "45px", objectFit: "contain" }} />
 
         {/* Mobile Menu Toggle */}
