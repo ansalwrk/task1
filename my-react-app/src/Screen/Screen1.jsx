@@ -63,10 +63,9 @@ export const Screen1 = () => {
               fontWeight: "bold",
               border: "1px solid #ff5100",
               marginBottom: "20px",
-              textTransform: "uppercase",
             }}
           >
-            Government Mandate
+           Government Mandate
           </button>
 
           <h1
@@ -98,20 +97,100 @@ export const Screen1 = () => {
             secure data transmission to approved servers.
           </p>
 
-          <button
-            style={{
-              backgroundColor: "transparent",
-              color: "white",
-              padding: "14px 32px",
-              border: "1px solid white",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
+<div class="grid grid-cols-2 gap-4">
+  <div style={{
+              backgroundColor: "#111111",
+              padding: "30px",
+              borderRadius: "28px",
+              width: "100%",
+              maxWidth: "500px",
+              border: "1px solid #222",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+            }}><h6  style={{
+              color:"white",
+            }}> <div style={{
+              backgroundColor: "#b3390023",
+              color: "#ff5100",
+              padding: "8px 18px",
+              fontSize: "13px",
+              borderRadius: "20px",
+              fontWeight: "bold",
+              border: "1px solid #ff5100",
+              marginBottom: "20px",
             }}
-          >
-            Talk to Expert
-          </button>
+          ></div>01    Real-time GPS Tracking</h6> </div>
+            
+  <div style={{
+              backgroundColor: "#111111",
+              padding: "30px",
+              borderRadius: "28px",
+              width: "100%",
+              maxWidth: "500px",
+              border: "1px solid #222",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+            }}><h6  style={{
+              color:"white",
+            }}> <div style={{
+              backgroundColor: "#b3390023",
+              color: "#ff5100",
+              padding: "8px 18px",
+              fontSize: "13px",
+              borderRadius: "20px",
+              fontWeight: "bold",
+              border: "1px solid #ff5100",
+              marginBottom: "20px",
+            }}
+          ></div>02  Emergency SOS Alerts</h6>
+            </div>
+
+  <div style={{
+              backgroundColor: "#111111",
+              padding: "30px",
+              borderRadius: "28px",
+              width: "100%",
+              maxWidth: "500px",
+              border: "1px solid #222",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+            }}><h6  style={{
+              color:"white",
+            }}> <div style={{
+              backgroundColor: "#b3390023",
+              color: "#ff5100",
+              padding: "8px 18px",
+              fontSize: "13px",
+              borderRadius: "20px",
+              fontWeight: "bold",
+              border: "1px solid #ff5100",
+              marginBottom: "20px",
+            }}
+          ></div>03   Secure Data Transmission  </h6>
+            </div>
+  <div style={{
+              backgroundColor: "#111111",
+              padding: "30px",
+              borderRadius: "28px",
+              width: "100%",
+              maxWidth: "500px",
+              border: "1px solid #222",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+            }}><h6  style={{
+              color:"white",
+            }}> <div style={{
+              backgroundColor: "#b3390023",
+              color: "#ff5100",
+              padding: "8px 18px",
+              fontSize: "13px",
+              borderRadius: "20px",
+              fontWeight: "bold",
+              border: "1px solid #ff5100",
+              marginBottom: "20px",
+            }}
+          ></div>04 Compliance Reporting</h6>
+            </div>
+</div>
+
+
+
         </div>
 
         {/* Right Card Side */}
