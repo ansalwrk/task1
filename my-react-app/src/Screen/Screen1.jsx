@@ -3,168 +3,115 @@ import screen2 from "../assets/screen2.png";
 
 export const Screen1 = () => {
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#000000",
+        minHeight: "100vh",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "5%",
+        boxSizing: "border-box",
+        fontFamily: "Helvetica, Arial, sans-serif",
+      }}
+    >
+      {/* Main Container: Responsive Flex */}
       <div
-        className="screen1full"
         style={{
           display: "flex",
-          flexDirection: "row", // Side-by-side layout
-          alignItems: "center",
-          justifyContent: "space-between",
-          minHeight: "100vh",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: "40px",
+          maxWidth: "1200px",
           width: "100%",
-          backgroundColor: "#000000",
-          padding: "5%",
-          boxSizing: "border-box",
-          flexWrap: "wrap"
+          alignItems: "center",
         }}
       >
-        <div 
-          className="content-left" 
-          style={{ 
-            flex: "1", 
-            minWidth: "300px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px" 
-          }}
-        >
-          <div className="screen1-box1">
-            <button
-              style={{
-                backgroundColor: "#b3390023",
-                color: "#ff5100",
-                padding: "10px 20px",
-                cursor: "pointer",
-                fontSize: "14px",
-                borderRadius: "20px",
-                fontWeight: "bolder",
-                border: "1px solid #ff5100",
-              }}
-            >
-              Government Mandate
-            </button>
-          </div>
+        {/* Left Content Side */}
+        <div style={{ flex: "1", minWidth: "300px" }}>
+          <button
+            style={{
+              backgroundColor: "#b3390023",
+              color: "#ff5100",
+              padding: "10px 20px",
+              fontSize: "14px",
+              borderRadius: "20px",
+              fontWeight: "bolder",
+              border: "1px solid #ff5100",
+              marginBottom: "24px",
+              cursor: "pointer",
+            }}
+          >
+            Government Mandate
+          </button>
 
-          <div className="2nd-heading">
-            <h1
-              style={{
-                fontSize: "2.5rem",
-                color: "white",
-                margin: 0,
-                fontFamily: "Helvetica, Arial, sans-serif",
-                lineHeight: "1.2"
-              }}
-            >
-              What is the AIS140 GPS Tracking <br /> System?
-            </h1>
-          </div>
-    <div class="grid grid-flow-col grid-rows-3 gap-4">
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              color: "white",
+              lineHeight: "1.2",
+              margin: "0 0 20px 0",
+            }}
+          >
+            What is the AIS140 GPS Tracking System?
+          </h1>
+
+          <p
+            style={{
+              fontWeight: "lighter",
+              color: "#ffffffb7",
+              lineHeight: "1.6",
+              fontSize: "1.1rem",
+              margin: "0 0 30px 0",
+              maxWidth: "600px",
+            }}
+          >
+            AIS 140 is an Indian government-mandated standard for vehicle tracking
+            systems, issued by the Automotive Industry Standards Committee (AISC).
+            It ensures real-time vehicle monitoring, emergency response, and
+            passenger safety, especially for public and commercial vehicles.
+            <br /><br />
+            An AIS140 GPS tracker integrates location tracking, emergency alerts, and
+            secure data transmission to approved servers, helping fleet owners and
+            transport authorities maintain compliance and safety.
+          </p>
 
 
-
-
-       <div class="row-span-3 ...">
-              
-
-          <div className="2nd-p">
-            <p
-              style={{
-                fontWeight: "lighter",
-                color: "#ffffffb7", // Adjusted color to be visible on dark bg
-                maxWidth: "90%",
-                fontFamily: "Helvetica, Arial, sans-serif",
-                lineHeight: "1.6",
-                margin: 0
-              }}
-            >
-              AIS 140 is an Indian government-mandated standard for vehicle tracking<br/>
-              systems, issued by the Automotive Industry Standards Committee (AISC).<br/>
-              It ensures real-time vehicle monitoring, emergency response, and<br/>
-              passenger safety, especially for public and commercial vehicles.<br/>
-              <br/>
-              An AIS140 GPS tracker integrates location tracking, emergency alerts, and<br/>
-              secure data transmission to approved servers, helping fleet owners and<br/>
-              transport authorities maintain compliance and safety.<br/>
-            </p>
-          </div>
         </div>
-      </div>
 
-
-
-
-
-      <div class="col-span-2 ...">
-        {/* Right Side: Image Container */}
+        {/* Right Image Side */}
         <div
-          className="screen2"
           style={{
             flex: "1",
-            display: "flex",
-
-            minWidth: "30px",
-            padding: "0px"
-          }}
-        >
-          <div style={{
-            backgroundColor: "#292929fa",
-            padding: "20px",
-            borderRadius: "15px",
+            minWidth: "300px",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            maxWidth: "500px"
-          }}>
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#1a1a1a",
+              padding: "20px",
+              borderRadius: "24px",
+              width: "100%",
+              maxWidth: "500px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+            }}
+          >
             <img
               src={screen2}
-              alt="screen2"
+              alt="AIS140 Device"
               style={{
                 width: "100%",
                 height: "auto",
-                objectFit: "contain",
+                display: "block",
+                borderRadius: "12px",
               }}
-              
             />
-      </div>    
-
-
-
-
-
-
-            
-            <div className="round-btn" styel={{
-              justifyContent: "",
-
-            }}>
-              <button style={{ backgroundColor: "#55555531", color: "white", padding: "15px 30px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", fontSize: "18px" }}>
-                 Talk to Expert
-              </button>
-            </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
-
         </div>
       </div>
-    </>
+    </div>
   );
 };
