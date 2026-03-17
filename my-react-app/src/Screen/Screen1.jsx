@@ -2,6 +2,30 @@ import React from "react";
 import screen2 from "../assets/screen2.png";
 
 export const Screen1 = () => {
+  // Reusable button style to keep code clean
+  const circleButtonStyle = {
+    width: "45px",
+    height: "45px",
+    borderRadius: "50%",
+    border: "none",
+    backgroundColor: "#ff5100",
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "8px",
+  };
+
+  const columnStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    flex: "1",
+    minWidth: "80px",
+  };
+
   return (
     <div
       style={{
@@ -16,31 +40,30 @@ export const Screen1 = () => {
         fontFamily: "Helvetica, Arial, sans-serif",
       }}
     >
-      {/* Main Container: Responsive Flex */}
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          gap: "40px",
+          gap: "60px",
           maxWidth: "1200px",
           width: "100%",
           alignItems: "center",
         }}
       >
         {/* Left Content Side */}
-        <div style={{ flex: "1", minWidth: "300px" }}>
+        <div style={{ flex: "1.2", minWidth: "320px" }}>
           <button
             style={{
               backgroundColor: "#b3390023",
               color: "#ff5100",
-              padding: "10px 20px",
-              fontSize: "14px",
+              padding: "8px 18px",
+              fontSize: "13px",
               borderRadius: "20px",
-              fontWeight: "bolder",
+              fontWeight: "bold",
               border: "1px solid #ff5100",
-              marginBottom: "24px",
-              cursor: "pointer",
+              marginBottom: "20px",
+              textTransform: "uppercase",
             }}
           >
             Government Mandate
@@ -48,39 +71,50 @@ export const Screen1 = () => {
 
           <h1
             style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontSize: "clamp(2rem, 5vw, 2.8rem)",
               color: "white",
               lineHeight: "1.2",
               margin: "0 0 20px 0",
             }}
           >
-            What is the AIS140 GPS Tracking System?
+            What is the AIS140 <br /> GPS Tracking System?
           </h1>
 
           <p
             style={{
-              fontWeight: "lighter",
+              fontWeight: "300",
               color: "#ffffffb7",
-              lineHeight: "1.6",
-              fontSize: "1.1rem",
-              margin: "0 0 30px 0",
-              maxWidth: "600px",
+              lineHeight: "1.7",
+              fontSize: "1.05rem",
+              margin: "0 0 35px 0",
+              maxWidth: "550px",
             }}
           >
             AIS 140 is an Indian government-mandated standard for vehicle tracking
             systems, issued by the Automotive Industry Standards Committee (AISC).
-            It ensures real-time vehicle monitoring, emergency response, and
-            passenger safety, especially for public and commercial vehicles.
+            It ensures real-time vehicle monitoring and passenger safety.
             <br /><br />
             An AIS140 GPS tracker integrates location tracking, emergency alerts, and
-            secure data transmission to approved servers, helping fleet owners and
-            transport authorities maintain compliance and safety.
+            secure data transmission to approved servers.
           </p>
 
-
+          <button
+            style={{
+              backgroundColor: "transparent",
+              color: "white",
+              padding: "14px 32px",
+              border: "1px solid white",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+            }}
+          >
+            Talk to Expert
+          </button>
         </div>
 
-        {/* Right Image Side */}
+        {/* Right Card Side */}
         <div
           style={{
             flex: "1",
@@ -91,12 +125,13 @@ export const Screen1 = () => {
         >
           <div
             style={{
-              backgroundColor: "#1a1a1a",
-              padding: "20px",
-              borderRadius: "24px",
+              backgroundColor: "#111111",
+              padding: "30px",
+              borderRadius: "28px",
               width: "100%",
               maxWidth: "500px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+              border: "1px solid #222",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
             }}
           >
             <img
@@ -106,9 +141,39 @@ export const Screen1 = () => {
                 width: "100%",
                 height: "auto",
                 display: "block",
-                borderRadius: "12px",
+                borderRadius: "16px",
+                marginBottom: "30px",
               }}
             />
+
+            {/* Bottom Steps Section */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "10px",
+              }}
+            >
+              <div style={columnStyle}>
+                <button style={circleButtonStyle}>1</button>
+                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Vehicle</p>
+              </div>
+
+              <div style={columnStyle}>
+                <button style={circleButtonStyle}>2</button>
+                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>GPS Device</p>
+              </div>
+
+              <div style={columnStyle}>
+                <button style={circleButtonStyle}>3</button>
+                <p style={{ color: "white", fontSize: "11px", margin: 0, textAlign: "center" }}>Cloud Server</p>
+              </div>
+
+              <div style={columnStyle}>
+                <button style={circleButtonStyle}>4</button>
+                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Dashboard</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
