@@ -65,7 +65,7 @@ export const Screen1 = () => {
               marginBottom: "20px",
             }}
           >
-           Government Mandate
+          <i class="bi bi-shield"></i> ⛉ Government Mandate
           </button>
 
           <h1
@@ -98,28 +98,41 @@ export const Screen1 = () => {
           </p>
 
 <div class="grid grid-cols-2 gap-4">
+  
+  
   <div style={{
               backgroundColor: "#111111",
               padding: "30px",
+              alignItems:"center",
               borderRadius: "28px",
               width: "100%",
               maxWidth: "500px",
               border: "1px solid #222",
               boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-            }}><h6  style={{
+            }}>
+              <h6  style={{
               color:"white",
-            }}> <div style={{
+            }}>
+              
+               <div style={{
               backgroundColor: "#b3390023",
               color: "#ff5100",
               padding: "8px 18px",
               fontSize: "13px",
               borderRadius: "20px",
               fontWeight: "bold",
+              maxWidth:"10%",
               border: "1px solid #ff5100",
               marginBottom: "20px",
             }}
-          ></div>01    Real-time GPS Tracking</h6> </div>
+          >
+            <div class="flex justify-start ...">
+  <div>01</div>
+  </div>
             
+            </div>   Real-time GPS Tracking</h6> </div>
+            
+  <div class="flex justify-start ...">
   <div style={{
               backgroundColor: "#111111",
               padding: "30px",
@@ -141,6 +154,7 @@ export const Screen1 = () => {
               marginBottom: "20px",
             }}
           ></div>02  Emergency SOS Alerts</h6>
+            </div>
             </div>
 
   <div style={{
@@ -187,6 +201,7 @@ export const Screen1 = () => {
             }}
           ></div>04 Compliance Reporting</h6>
             </div>
+            
 </div>
 
 
