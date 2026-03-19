@@ -2,7 +2,7 @@ import React from "react";
 import screen2 from "../assets/screen2.png";
 
 export const Screen1 = () => {
-  // Reusable button style to keep code clean
+  // Reusable Styles
   const circleButtonStyle = {
     width: "45px",
     height: "45px",
@@ -24,6 +24,26 @@ export const Screen1 = () => {
     alignItems: "center",
     flex: "1",
     minWidth: "80px",
+  };
+
+  const featureCardStyle = {
+    backgroundColor: "#111111",
+    padding: "24px",
+    borderRadius: "20px",
+    border: "1px solid #222",
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+  };
+
+  const numberBadgeStyle = {
+    backgroundColor: "#b3390023",
+    color: "#ff5100",
+    padding: "6px 12px",
+    fontSize: "13px",
+    borderRadius: "12px",
+    fontWeight: "bold",
+    border: "1px solid #ff5100",
   };
 
   return (
@@ -65,7 +85,7 @@ export const Screen1 = () => {
               marginBottom: "20px",
             }}
           >
-          <i class="bi bi-shield"></i> ⛉ Government Mandate
+            <i class="bi bi-shield"></i> ⛉ Government Mandate
           </button>
 
           <h1
@@ -92,131 +112,34 @@ export const Screen1 = () => {
             AIS 140 is an Indian government-mandated standard for vehicle tracking
             systems, issued by the Automotive Industry Standards Committee (AISC).
             It ensures real-time vehicle monitoring and passenger safety.
-            <br /><br />
-            An AIS140 GPS tracker integrates location tracking, emergency alerts, and
-            secure data transmission to approved servers.
           </p>
 
-<div class="grid grid-cols-2 gap-4">
-  
-  
-  <div style={{
-              backgroundColor: "#111111",
-              padding: "30px",
-              alignItems:"center",
-              borderRadius: "28px",
-              width: "100%",
-              maxWidth: "500px",
-              border: "1px solid #222",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-            }}>
-              <h6  style={{
-              color:"white",
-            }}>
-              
-               <div style={{
-              backgroundColor: "#b3390023",
-              color: "#ff5100",
-              padding: "8px 18px",
-              fontSize: "13px",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              maxWidth:"10%",
-              border: "1px solid #ff5100",
-              marginBottom: "20px",
-            }}
-          >
-            <div class="flex justify-start ...">
-  <div>01</div>
-  </div>
-            
-            </div>   Real-time GPS Tracking</h6> </div>
-            
-  <div class="flex justify-start ...">
-  <div style={{
-              backgroundColor: "#111111",
-              padding: "30px",
-              borderRadius: "28px",
-              width: "100%",
-              maxWidth: "500px",
-              border: "1px solid #222",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-            }}><h6  style={{
-              color:"white",
-            }}> <div style={{
-              backgroundColor: "#b3390023",
-              color: "#ff5100",
-              padding: "8px 18px",
-              fontSize: "13px",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              border: "1px solid #ff5100",
-              marginBottom: "20px",
-            }}
-          ></div>02  Emergency SOS Alerts</h6>
-            </div>
+          {/* Features Grid */}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div style={featureCardStyle}>
+              <div style={numberBadgeStyle}>01</div>
+              <h6 style={{ color: "white", margin: 0 }}>Real-time GPS Tracking</h6>
             </div>
 
-  <div style={{
-              backgroundColor: "#111111",
-              padding: "30px",
-              borderRadius: "28px",
-              width: "100%",
-              maxWidth: "500px",
-              border: "1px solid #222",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-            }}><h6  style={{
-              color:"white",
-            }}> <div style={{
-              backgroundColor: "#b3390023",
-              color: "#ff5100",
-              padding: "8px 18px",
-              fontSize: "13px",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              border: "1px solid #ff5100",
-              marginBottom: "20px",
-            }}
-          ></div>03   Secure Data Transmission  </h6>
+            <div style={featureCardStyle}>
+              <div style={numberBadgeStyle}>02</div>
+              <h6 style={{ color: "white", margin: 0 }}>Emergency SOS Alerts</h6>
             </div>
-  <div style={{
-              backgroundColor: "#111111",
-              padding: "30px",
-              borderRadius: "28px",
-              width: "100%",
-              maxWidth: "500px",
-              border: "1px solid #222",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-            }}><h6  style={{
-              color:"white",
-            }}> <div style={{
-              backgroundColor: "#b3390023",
-              color: "#ff5100",
-              padding: "8px 18px",
-              fontSize: "13px",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              border: "1px solid #ff5100",
-              marginBottom: "20px",
-            }}
-          ></div>04 Compliance Reporting</h6>
+
+            <div style={featureCardStyle}>
+              <div style={numberBadgeStyle}>03</div>
+              <h6 style={{ color: "white", margin: 0 }}>Secure Data Transmission</h6>
             </div>
-            
-</div>
 
-
-
+            <div style={featureCardStyle}>
+              <div style={numberBadgeStyle}>04</div>
+              <h6 style={{ color: "white", margin: 0 }}>Compliance Reporting</h6>
+            </div>
+          </div>
         </div>
 
         {/* Right Card Side */}
-        <div
-          style={{
-            flex: "1",
-            minWidth: "300px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div style={{ flex: "1", minWidth: "300px", display: "flex", justifyContent: "center" }}>
           <div
             style={{
               backgroundColor: "#111111",
@@ -240,29 +163,19 @@ export const Screen1 = () => {
               }}
             />
 
-            {/* Bottom Steps Section */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "10px",
-              }}
-            >
+            <div style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>1</button>
                 <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Vehicle</p>
               </div>
-
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>2</button>
                 <p style={{ color: "white", fontSize: "11px", margin: 0 }}>GPS Device</p>
               </div>
-
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>3</button>
                 <p style={{ color: "white", fontSize: "11px", margin: 0, textAlign: "center" }}>Cloud Server</p>
               </div>
-
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>4</button>
                 <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Dashboard</p>
