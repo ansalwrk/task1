@@ -1,14 +1,4 @@
-export const Screen2 = () => {
-
-
-
-
-
-
-
-
-
-  
+export const Screen2 = () => {  
   return (
 <>
 
