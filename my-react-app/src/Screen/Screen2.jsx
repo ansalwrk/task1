@@ -1,48 +1,7 @@
 export const Screen2 = () => {
 
 
-  const circleButtonStyle = {
-    width: "45px",
-    height: "45px",
-    borderRadius: "50%",
-    border: "none",
-    backgroundColor: "#ff5100",
-    color: "white",
-    fontWeight: "bold",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: "8px",
-  };
 
-  const columnStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    flex: "1",
-    minWidth: "80px",
-  };
-
-  const orrangecard = {
-    backgroundColor: "#111111",
-    padding: "24px",
-    borderRadius: "20px",
-    border: "1px solid #222",
-    display: "flex",
-    alignItems: "center",
-    gap: "15px",
-  };
-
-  const numberBadgeStyle = {
-    backgroundColor: "#b3390023",
-    color: "#ff5100",
-    padding: "6px 12px",
-    fontSize: "13px",
-    borderRadius: "12px",
-    fontWeight: "bold",
-    border: "1px solid #ff5100",
-  };
 
 
 
