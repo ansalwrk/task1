@@ -1,4 +1,6 @@
-import {   }from 'lucide-react';
+import {ChartNoAxesColumnIncreasing   }from 'lucide-react';
+import screen6 from "../assets/screen6.png";
+
 export const Screen6 = () => {
 
 
@@ -46,13 +48,37 @@ style={{
     <div style={{ backgroundColor: "#000000", padding:"20px 20px",height:"auto", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
 
-
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}>oihoih</div>
+<div>
+      <div style={{    backgroundColor: "#b963001e", color: "#ff7300", padding: "6px 12px", fontSize: "20px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><ChartNoAxesColumnIncreasing size={25} /></div>
     <div>
        <h4  style={{color:"white",fontSize:"20px"}}>AIS 140 GPS Tracker – 2G</h4>
     </div>
 </div>
+<div>
+        <img 
+          src={screen6} 
+          alt="in" 
+          style={{ 
+
+
+            width: "50%", height: "40%", 
+            objectFit: "cover", 
+            justifyContent:"center",
+            zIndex: 0, 
+            borderRadius:"30px"
+          }} 
+        />
+</div>
+
+
+
+
+</div>
+
+
+
+
 </div>
 
 
