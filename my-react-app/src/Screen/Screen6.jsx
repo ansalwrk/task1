@@ -39,11 +39,11 @@ style={{
 
 
 
-<div className="grid grid-cols-2 gap-x-10 mx-16">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-10 mx-4 md:mx-16">
 
 
 
-        <div class="flex flex-col ...">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center md:items-start">
 
           
           
@@ -130,14 +130,14 @@ style={{
 
 
 
-        <div className="flex flex-col ...">
+       <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center md:items-start">
         
           
 
           
           
             <div style={{ backgroundColor: "#f578041c", borderRadius: "20px",
-                border: "1px solid #504e4e",justifyContent:"right"   }} >
+                border: "1px solid #f87000",justifyContent:"right"   }} >
                       <div style={{  display: "flex",    justifyContent: "flex-end",padding:"15px 15px",   }}>
          <button style={{  alignContent:"center",    backgroundColor: "#ff7b00",   color: "#ffffff",       padding: "1px 12px",
               fontSize: "12px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff5100",}}>

@@ -31,7 +31,7 @@ style={{
   
   </div>
 
-<div className="grid grid-cols-2 mr-15 ml-15">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 md:mx-12 lg:mx-16">
 
     <div className="grid gap-y-2 mr-10">
       

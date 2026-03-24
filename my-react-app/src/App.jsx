@@ -8,6 +8,7 @@ import { Screen4 } from "./Screen/Screen4";
 import {Screen5} from "./Screen/Screen5.jsx";
 import { Screen6 } from "./Screen/Screen6.jsx";
 import {Screen7} from "./Screen/Screen7.jsx";
+import{Screen8} from "./Screen/Screen8.jsx";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Screen5 />
       <Screen6 />
       <Screen7 />
+      <Screen8 />
       
       
 

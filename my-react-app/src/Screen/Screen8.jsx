@@ -1,6 +1,6 @@
 import { Cog ,Heart,Shield,Laptop, ShieldOff } from 'lucide-react';
-import screen4 from "../assets/screen4img.png";
-export const Screen4 = () => {
+import screen8 from "../assets/screen4img.png";
+export const Screen8 = () => {
 
 
 return (
@@ -10,23 +10,56 @@ return (
 
 <div style={{
 
-  backgroundColor:"#000000",}}     >       
- <div className="grid grid-cols-1 ml-4 md:ml-10">
-           <div style={{ 
-              backgroundColor: "#b3390067", 
+  backgroundColor:"#000000",padding:"150px 0px 0px 0px "}}     >       
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-4 md:ml-10">
+
+          </div>
+
+
+
+
+
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 m-2 md:m-3">
+
+
+
+
+    <div>
+
+
+        <img 
+          src={screen8} 
+          alt="BG" 
+          style={{ 
+
+
+            width: "100%", height: "80%", 
+            objectFit: "cover", 
+            justifyContent:"center",
+            zIndex: 0, 
+            borderRadius:"30px"
+          }} 
+        />
+</div>
+    
+
+    <div >
+            <div style={{ 
+              backgroundColor: "#b3390023", 
               color: "#ff5100", 
-              padding: "8px 16px",  
+              padding: "8px 16px", 
+              border: "1px solid #ff5100", 
               borderRadius: "20px", 
               fontWeight: "bold", 
-              fontSize:"13px",
               display: "inline-block", 
-              marginBottom: "15px",  width:"6%"
+              marginBottom: "15px" 
             }}>
-Benefits
+              Why GPSCop
             </div>
 
 
-<div>
+        <div>
           <h1
             style={{
               fontSize: "clamp(2rem, 5vw, 2.8rem)",
@@ -37,15 +70,11 @@ Benefits
           >
             Benefits of Using AIS 140 GPS<br/> Tracking Devices
           </h1>
+          </div>
 
 
 
-
-
-
-  <div className="grid grid-cols-1 md:grid-cols-2 m-2 md:m-3 gap-6 md:gap-8">
-
-    <div >
+        
     <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
@@ -107,23 +136,6 @@ Benefits
     </div>
     
 
-<div>
-
-
-        <img 
-          src={screen4} 
-          alt="BG" 
-          style={{ 
-
-
-            width: "100%", height: "80%", 
-            objectFit: "cover", 
-            justifyContent:"center",
-            zIndex: 0, 
-            borderRadius:"30px"
-          }} 
-        />
-</div>
 
 
 
@@ -136,8 +148,8 @@ Benefits
 
 
 
-</div>
-</div>
+
+
 
 
 
@@ -167,9 +179,7 @@ Benefits
 
 
 
-           
-
-
+        
 </>
   );
 };

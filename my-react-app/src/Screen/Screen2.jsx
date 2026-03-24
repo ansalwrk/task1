@@ -32,9 +32,9 @@ style={{
   
   </div>
 
-<div class="grid grid-cols-2 ">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
 
-<div class="rounded-[20px] ml-35 mr-5 h-101 bg-black outline outline-red-800 "> 
+<div className="rounded-[20px] ml-4 lg:ml-35 mr-4 lg:mr-5 h-auto lg:h-[404px] bg-black outline outline-red-800 p-6 lg:p-0"> 
 
 
   <div class="m-3 grid grid-cols-1">
@@ -110,8 +110,8 @@ style={{
 </div>
 </div>
 
-<div class="rounded-[20px] mr-35 ml-5 h-101 bg-black outline outline-green-800">
-   <div class="m-3 grid grid-cols-1">
+<div className="rounded-[20px] ml-4 lg:ml-5 mr-4 lg:mr-35 h-auto lg:h-[404px] bg-black outline outline-green-800 p-6 lg:p-0">
+   <div className="grid grid-cols-1 md:m-5 lg:mx-auto lg:max-w-4xl gap-6 m-3">
 
 
 
