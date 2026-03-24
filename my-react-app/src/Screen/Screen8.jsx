@@ -68,8 +68,9 @@ return (
               margin: "0 0 20px 0",
             }}
           >
-            Benefits of Using AIS 140 GPS<br/> Tracking Devices
+           Why GPSCop AIS 140 Vehicle Tracking System?
           </h1>
+          <p>We provide end-to-end GPS tracking solutions with certified devices, robust software, and dedicated support.</p>
           </div>
 
 
@@ -131,6 +132,7 @@ return (
     <div>
        <h4  style={{color:"white",fontSize:"20px"}}> Centralized Monitoring</h4>
        <p style={{ color:"white",}}>Access vehicle data from the web or mobile dashboard anytime.</p>
+       
     </div>
     </div>
     </div>
@@ -165,7 +167,7 @@ return (
 
 
 </div>
-
+<br/>
 </div>
 
 
