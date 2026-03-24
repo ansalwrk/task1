@@ -35,19 +35,18 @@ style={{
 
     <div className="grid gap-y-2 mr-10">
       
-    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
-      border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
+          <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+                border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> <Bus /> </div>
-    <div>
-       <h4  style={{color:"white",fontSize:"20px"}}>Public Transport Operators</h4>
-       <p style={{ color:"white",fontSize:"3"}}>City buses, school buses, staff transport</p>
-    </div>
-    </div>
-    
-    
-    <div >
+            <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
+             borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> <Bus /> </div>
+              <div>
+                 <h4  style={{color:"white",fontSize:"20px"}}>Public Transport Operators</h4>
+                <p style={{ color:"white",fontSize:"3"}}>City buses, school buses, staff transport</p>
+              </div>
+            </div>
+          <div >
+            
     <div style={{ backgroundColor: "#000000",  padding: "5x", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
