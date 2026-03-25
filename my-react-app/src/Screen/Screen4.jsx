@@ -43,69 +43,83 @@ Benefits
 
 
 
-  <div className="grid grid-cols-1 md:grid-cols-2 m-2 md:m-3 gap-6 md:gap-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 md:mx-12 lg:mx-16">
 
     <div >
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
+          <div className="grid gap-y-2 mr-10">
+      
+          <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+                border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
+       
+            <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
+             borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> <Shield/> </div>
+              <div>
+                 <h4  style={{color:"white",fontSize:"20px"}}>          Government Compliance Made Easy             </h4>
+                <p style={{ color:"white",fontSize:"3"}}>     Meets AIS 140 regulations required for approved vehicle categories.       </p>
+              </div>
+            </div>
+          <div >
+            
+    <div style={{ backgroundColor: "#000000",  padding: "5x", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Shield /></div>
-    <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Government Compliance Made Easy</h4>
-       <p style={{ color:"white",}}> Meets AIS 140 regulations required for approved vehicle categories.</p>
-    </div>
-    </div>
-<br/>
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
-      border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
-       
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
     borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Heart /></div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Improved Passenger & Driver Safety</h4>
-       <p style={{ color:"white",}}> Faster emergency response and continuous monitoring.</p>
-    </div>
-    </div>
-
-
-<br/>
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
-      border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
-       
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Cog/></div>
-    <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Better Fleet Control</h4>
-       <p style={{ color:"white",}}>Monitor vehicle usage, routes, and driving behavior efficiently.</p>
-    </div>
-    </div>
-
-    <br/>
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
-      border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
-       
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><ShieldOff /></div>
-    <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Reduced Operational Risks</h4>
-       <p style={{ color:"white",}}>Prevent unauthorized usage, theft, and misuse.</p>
-    </div>
-    </div>
-
-    <br/>
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
-      border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
-       
-      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Laptop /></div>
-    <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Centralized Monitoring</h4>
-       <p style={{ color:"white",}}>Access vehicle data from the web or mobile dashboard anytime.</p>
+       <h4  style={{color:"white",fontSize:"20px"}}>     Improved Passenger & Driver Safety        </h4>
+       <p style={{color:"white",fontSize:"3"}}>       Faster emergency response and continuous monitoring.     </p>
     </div>
     </div>
     </div>
     
+
+    <div >
+    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+      border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
+       
+      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> < Cog  /> </div>
+    <div>
+       <h4  style={{color:"white",fontSize:"20px"}}>     Better Fleet Control       </h4>
+       <p style={{ color:"white",fontSize:"3"}}>      Monitor vehicle usage, routes, and driving behavior efficiently.      </p>
+    </div>
+    </div>
+    </div>
+
+
+        <div >
+    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+      border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
+       
+      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> < ShieldOff   /> </div>
+    <div>
+       <h4  style={{color:"white",fontSize:"20px"}}>    Reduced Operational Risks        </h4>
+       <p style={{color:"white",fontSize:"3"}}>        Prevent unauthorized usage, theft, and misuse.    </p>
+    </div>
+    </div>
+    </div>
+
+
+        <div >
+    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+      border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
+       
+      <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}> <  Laptop   /> </div>
+    <div>
+       <h4  style={{color:"white",fontSize:"20px"}}>   Centralized Monitoring         </h4>
+       <p style={{color:"white",fontSize:"3"}}>      Access vehicle data from the web or mobile dashboard anytime.      </p>
+    </div>
+    </div>
+    </div>
+    
+</div >
+
+
+    
+
+</div>    
 
 <div>
 
@@ -136,8 +150,6 @@ Benefits
 
 
 
-</div>
-</div>
 
 
 
@@ -152,11 +164,13 @@ Benefits
 
 
 
-</div>
+
 
 </div>
 
-
+</div>
+</div>
+</div>
 
 
 

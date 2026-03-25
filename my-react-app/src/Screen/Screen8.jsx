@@ -1,4 +1,4 @@
-import { Cog ,Heart,Shield,Laptop, ShieldOff } from 'lucide-react';
+import { Check,Wrench ,SignalHigh,Headphones ,Layers } from 'lucide-react';
 import screen8 from "../assets/screen4img.png";
 export const Screen8 = () => {
 
@@ -20,7 +20,7 @@ return (
 
 
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 m-2 md:m-3">
+  <div className="grid grid-cols-1 pl-10  sm:grid-cols-2 gap-4 md:gap-8 m-2 md:m-3">
 
 
 
@@ -59,7 +59,7 @@ return (
             </div>
 
 
-        <div>
+        <div className="grid gap-y-2 mx-10 mr-10">
           <h1
             style={{
               fontSize: "clamp(2rem, 5vw, 2.8rem)",
@@ -70,73 +70,67 @@ return (
           >
            Why GPSCop AIS 140 Vehicle Tracking System?
           </h1>
-          <p>We provide end-to-end GPS tracking solutions with certified devices, robust software, and dedicated support.</p>
-          </div>
+          <p style={{color:"#d3d3d3",fontSize:"18px"}}  >We provide end-to-end GPS tracking solutions with certified devices,<br/> robust software, and dedicated support.</p>
+          
 
 
 
         
-    <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
+    <div style={{ backgroundColor: "#44444480", borderRadius: "20px",padding:"10px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Shield /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><  Check/></div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Government Compliance Made Easy</h4>
-       <p style={{ color:"white",}}> Meets AIS 140 regulations required for approved vehicle categories.</p>
+       <h4  style={{color:"white",fontSize:"20px"}}>Trusted AIS140-compatible tracking solutions</h4>
     </div>
     </div>
-<br/>
+
     <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
       border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Heart /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}>  <Wrench />   </div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Improved Passenger & Driver Safety</h4>
-       <p style={{ color:"white",}}> Faster emergency response and continuous monitoring.</p>
+       <h4  style={{color:"white",fontSize:"20px"}}> Reliable hardware with proven performance</h4>
     </div>
     </div>
 
 
-<br/>
+
     <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
       border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Cog/></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}>   <SignalHigh />      </div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Better Fleet Control</h4>
-       <p style={{ color:"white",}}>Monitor vehicle usage, routes, and driving behavior efficiently.</p>
+       <h4  style={{color:"white",fontSize:"20px"}}> Easy integration with dashboards & reports</h4>
     </div>
     </div>
 
-    <br/>
+  
     <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
       border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><ShieldOff /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}>   <Headphones />      </div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Reduced Operational Risks</h4>
-       <p style={{ color:"white",}}>Prevent unauthorized usage, theft, and misuse.</p>
+       <h4  style={{color:"white",fontSize:"20px"}}> Dedicated technical support & onboarding</h4>
     </div>
     </div>
 
-    <br/>
+  
     <div style={{ backgroundColor: "#44444480",  padding: "10px", borderRadius: "20px",
       border: "1px solid #504e4e", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "25px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Laptop /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}>     <Layers />        </div>
     <div>
-       <h4  style={{color:"white",fontSize:"20px"}}> Centralized Monitoring</h4>
-       <p style={{ color:"white",}}>Access vehicle data from the web or mobile dashboard anytime.</p>
-       
+       <h4  style={{color:"white",fontSize:"20px"}}> Scalable for single vehicles to large fleets</h4>
     </div>
     </div>
     </div>
-    
+    </div>
 
 
 

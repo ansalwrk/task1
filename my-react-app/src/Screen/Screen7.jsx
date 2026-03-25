@@ -118,41 +118,8 @@ return  (
 
                                 <h4 className="2/4" style={{color:"white",fontSize:"20px"}}>    Price   </h4>
                                 <h4  style={{color:"white",fontSize:"20px"}}>             	Lower       </h4>
-                                <h4  style={{color:"#ff5e00",fontSize:"20px"}}    >         Premium      </h4> 
-
-                         
+                                <h4  style={{color:"#ff5e00",fontSize:"20px"}}    >         Premium      </h4>                       
                             </div>
-
-                            
-
-
-                            
-
-
-                                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>

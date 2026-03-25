@@ -111,7 +111,7 @@ style={{
 </div>
 
 <div className="rounded-[20px] ml-4 lg:ml-5 mr-4 lg:mr-35 h-auto lg:h-[404px] bg-black outline outline-green-800 p-6 lg:p-0">
-   <div className="grid grid-cols-1 md:m-5 lg:mx-auto lg:max-w-4xl gap-6 m-3">
+  
 
 
 
@@ -176,7 +176,7 @@ style={{
 
 
 </div>
-</div>
+
 </div>
 
 <div className="screen2head"
