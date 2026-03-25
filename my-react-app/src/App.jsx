@@ -13,7 +13,6 @@ import {Screen9} from "./Screen/Screen9.jsx";
 import {Screen10} from "./Screen/Screen10.jsx";
 
 
-
 function App() {
   return (
     
