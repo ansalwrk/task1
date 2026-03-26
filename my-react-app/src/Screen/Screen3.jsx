@@ -5,6 +5,7 @@ export const Screen3 = () => {
   const cards = Array.from({ length: 8 });
   const sectionRef = useRef(null);
   const scrollRef = useRef(null);
+  
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -13,38 +14,26 @@ export const Screen3 = () => {
   const [lastDragX, setLastDragX] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isSnapping, setIsSnapping] = useState(false);
 
-  // Clone cards for infinite loop effect
   const clonedCards = [...cards, ...cards, ...cards];
-  const cardWidth = 290; // 250px minWidth + 40px gap
+  const cardWidth = 250;
+  const gap = 20;
+  const totalCardWidth = cardWidth + gap;
+  const containerPadding = 40;
 
-  // Intersection Observer to detect when section comes into view
+  // Auto-scroll on view
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAutoScrolled && !isAutoScrolling) {
-            startAutoScroll();
-          }
-        });
-      },
+      (entries) => entries[0].isIntersecting && !hasAutoScrolled && !isAutoScrolling && startAutoScroll(),
       { threshold: 0.5 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, [hasAutoScrolled, isAutoScrolling]);
 
-  // Center snap detection while scrolling
+  // Update current card index based on scroll position
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -52,45 +41,68 @@ export const Screen3 = () => {
     const handleScroll = () => {
       if (isAutoScrolling || isSnapping) return;
       
-      const scrollPosition = container.scrollLeft;
-      const cardElements = container.children;
+      const scrollPos = container.scrollLeft;
+      const cards = container.children;
+      let closest = 0, minDist = Infinity;
       
-      // Find which card is closest to center
-      let closestIndex = 0;
-      let minDistance = Infinity;
-      
-      for (let i = 0; i < cardElements.length; i++) {
-        const card = cardElements[i];
-        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-        const viewportCenter = scrollPosition + (container.clientWidth / 2);
-        const distance = Math.abs(cardCenter - viewportCenter);
-        
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = i;
-        }
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const viewCenter = scrollPos + container.clientWidth / 2;
+        const distance = Math.abs(cardCenter - viewCenter);
+        if (distance < minDist) { minDist = distance; closest = i; }
       }
       
-      // Calculate actual index
-      const actualIndex = closestIndex % cards.length;
-      setActiveIndex(actualIndex);
+      setCurrentCardIndex(closest % cards.length);
       
-      // Handle infinite loop reset
       const totalWidth = container.scrollWidth;
-      const cloneSetWidth = totalWidth / 3;
-      
-      if (scrollPosition <= cloneSetWidth * 0.05) {
-        container.scrollLeft = cloneSetWidth;
-      } else if (scrollPosition >= cloneSetWidth * 1.95) {
-        container.scrollLeft = cloneSetWidth;
-      }
+      const cloneWidth = totalWidth / 3;
+      if (scrollPos <= cloneWidth * 0.05) container.scrollLeft = cloneWidth;
+      else if (scrollPos >= cloneWidth * 1.95) container.scrollLeft = cloneWidth;
     };
     
     container.addEventListener('scroll', handleScroll);
     return () => container.removeEventListener('scroll', handleScroll);
-  }, [cards.length, isAutoScrolling, isSnapping]);
+  }, [isAutoScrolling, isSnapping]);
 
-  // Snap to center function with momentum
+  const scrollToCard = (cardIndex) => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling) return;
+    
+    const cardElements = container.children;
+    let targetCard = null;
+    
+    // Find the target card in the visible set
+    for (let i = 0; i < cardElements.length; i++) {
+      if (i % cards.length === cardIndex) {
+        targetCard = cardElements[i];
+        break;
+      }
+    }
+    
+    if (targetCard) {
+      // Calculate scroll position to center the card
+      const containerWidth = container.clientWidth;
+      const targetCardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
+      const scrollTo = targetCardCenter - containerWidth / 2;
+      
+      container.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      setCurrentCardIndex(cardIndex);
+    }
+  };
+
+  const nextCard = () => {
+    if (isAutoScrolling || !hasAutoScrolled) return;
+    const nextIndex = (currentCardIndex + 1) % cards.length;
+    scrollToCard(nextIndex);
+  };
+
+  const prevCard = () => {
+    if (isAutoScrolling || !hasAutoScrolled) return;
+    const prevIndex = (currentCardIndex - 1 + cards.length) % cards.length;
+    scrollToCard(prevIndex);
+  };
+
   const snapToNearestCard = () => {
     const container = scrollRef.current;
     if (!container || isAutoScrolling) return;
@@ -98,33 +110,27 @@ export const Screen3 = () => {
     setIsSnapping(true);
     const cardElements = container.children;
     let closestCard = null;
-    let minDistance = Infinity;
+    let minDist = Infinity;
     let closestIndex = 0;
+    const viewCenter = container.scrollLeft + container.clientWidth / 2;
     
     for (let i = 0; i < cardElements.length; i++) {
       const card = cardElements[i];
-      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-      const viewportCenter = container.scrollLeft + (container.clientWidth / 2);
-      const distance = Math.abs(cardCenter - viewportCenter);
-      
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestCard = card;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(cardCenter - viewCenter);
+      if (distance < minDist) { 
+        minDist = distance; 
+        closestCard = card; 
         closestIndex = i;
       }
     }
     
     if (closestCard) {
-      const scrollTo = closestCard.offsetLeft - (container.clientWidth / 2) + (closestCard.offsetWidth / 2);
-      container.scrollTo({
-        left: scrollTo,
-        behavior: 'smooth'
-      });
-      
-      // Update active index after snap
+      // Snap to show card centered
+      const scrollTo = closestCard.offsetLeft - container.clientWidth / 2 + closestCard.offsetWidth / 2;
+      container.scrollTo({ left: scrollTo, behavior: 'smooth' });
       setTimeout(() => {
-        const actualIndex = closestIndex % cards.length;
-        setActiveIndex(actualIndex);
+        setCurrentCardIndex(closestIndex % cards.length);
         setIsSnapping(false);
       }, 300);
     } else {
@@ -134,306 +140,246 @@ export const Screen3 = () => {
 
   const startAutoScroll = () => {
     if (!scrollRef.current || hasAutoScrolled) return;
-
+    
     setIsAutoScrolling(true);
     const container = scrollRef.current;
-    const totalWidth = container.scrollWidth;
-    const middleSetStart = totalWidth / 3;
-    const targetPosition = middleSetStart + (cards.length * cardWidth);
-    
-    let startPosition = container.scrollLeft;
+    const startPos = container.scrollLeft;
+    const targetPos = container.scrollWidth / 3 + (cards.length * totalCardWidth);
+    const duration = 5000;
     let startTime = null;
-    const duration = 3000;
     
-    const animateScroll = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const elapsed = currentTime - startTime;
+    const animate = (time) => {
+      if (!startTime) startTime = time;
+      const elapsed = time - startTime;
       const progress = Math.min(elapsed / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      container.scrollLeft = startPos + (targetPos - startPos) * easeOut;
       
-      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-      const newPosition = startPosition + (targetPosition - startPosition) * easeOutCubic;
-      container.scrollLeft = newPosition;
-      
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      } else {
-        container.scrollLeft = targetPosition;
+      if (progress < 1) requestAnimationFrame(animate);
+      else {
         setIsAutoScrolling(false);
         setHasAutoScrolled(true);
-        
         setTimeout(() => {
-          const middlePosition = totalWidth / 3;
-          container.scrollLeft = middlePosition;
+          container.scrollLeft = container.scrollWidth / 3;
           snapToNearestCard();
         }, 100);
       }
     };
     
-    requestAnimationFrame(animateScroll);
+    requestAnimationFrame(animate);
   };
 
-  // Mouse swipe handlers with momentum
   const handleMouseDown = (e) => {
-    if (isAutoScrolling || !hasAutoScrolled) return;
-    if (e.button !== 0) return;
-    
+    if (isAutoScrolling || !hasAutoScrolled || e.button !== 0) return;
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
-    setDragVelocity(0);
     setLastDragTime(Date.now());
     setLastDragX(e.pageX);
-    
-    // Disable smooth scrolling during drag
     scrollRef.current.style.scrollBehavior = 'auto';
-    
     e.preventDefault();
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging || isAutoScrolling) return;
-    
     e.preventDefault();
-    const currentTime = Date.now();
-    const currentX = e.pageX;
-    const deltaX = currentX - lastDragX;
-    const deltaTime = currentTime - lastDragTime;
-    
-    // Calculate velocity (pixels per millisecond)
-    if (deltaTime > 0) {
-      const velocity = (deltaX / deltaTime) * 16;
-      setDragVelocity(velocity);
-    }
+    const now = Date.now();
+    const deltaX = e.pageX - lastDragX;
+    const deltaTime = now - lastDragTime;
+    if (deltaTime > 0) setDragVelocity((deltaX / deltaTime) * 16);
     
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-    
-    setLastDragX(currentX);
-    setLastDragTime(currentTime);
+    scrollRef.current.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    setLastDragX(e.pageX);
+    setLastDragTime(now);
   };
 
   const handleMouseUp = () => {
     if (!isDragging) return;
-    
     setIsDragging(false);
     
-    // Apply momentum if velocity is significant
     if (Math.abs(dragVelocity) > 0.2 && !isAutoScrolling) {
       const container = scrollRef.current;
-      const initialScrollLeft = container.scrollLeft;
+      const startScroll = container.scrollLeft;
       let momentum = dragVelocity * 15;
       let startTime = null;
-      let animationFrame;
       
-      const applyMomentum = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const duration = 500;
-        
-        if (elapsed < duration && Math.abs(momentum) > 0.5) {
-          const progress = 1 - (elapsed / duration);
-          const easeOut = Math.pow(progress, 2);
-          const currentMomentum = momentum * easeOut;
-          
-          container.scrollLeft = initialScrollLeft + currentMomentum;
-          
+      const applyMomentum = (time) => {
+        if (!startTime) startTime = time;
+        const elapsed = time - startTime;
+        if (elapsed < 500 && Math.abs(momentum) > 0.5) {
+          container.scrollLeft = startScroll + momentum * Math.pow(1 - elapsed / 500, 2);
           momentum *= 0.95;
-          
-          animationFrame = requestAnimationFrame(applyMomentum);
-        } else {
-          cancelAnimationFrame(animationFrame);
-          snapToNearestCard();
-        }
+          requestAnimationFrame(applyMomentum);
+        } else snapToNearestCard();
       };
-      
-      animationFrame = requestAnimationFrame(applyMomentum);
-    } else {
-      snapToNearestCard();
-    }
-    
+      requestAnimationFrame(applyMomentum);
+    } else snapToNearestCard();
     setDragVelocity(0);
   };
 
-  // Prevent vertical scrolling while auto-scrolling
+  // Lock vertical scroll during auto-scroll
   useEffect(() => {
-    const preventVerticalScroll = (e) => {
-      if (isAutoScrolling) {
-        e.preventDefault();
-      }
-    };
-
+    const preventScroll = (e) => isAutoScrolling && e.preventDefault();
     if (isAutoScrolling) {
-      window.addEventListener('wheel', preventVerticalScroll, { passive: false });
+      window.addEventListener('wheel', preventScroll, { passive: false });
       document.body.style.overflow = 'hidden';
     } else {
-      window.removeEventListener('wheel', preventVerticalScroll);
+      window.removeEventListener('wheel', preventScroll);
       document.body.style.overflow = '';
     }
-
     return () => {
-      window.removeEventListener('wheel', preventVerticalScroll);
+      window.removeEventListener('wheel', preventScroll);
       document.body.style.overflow = '';
     };
   }, [isAutoScrolling]);
 
-  // Clean up drag state on unmount
-  useEffect(() => {
-    return () => {
-      if (isDragging) {
-        setIsDragging(false);
-      }
-    };
-  }, [isDragging]);
-
   return (
-    <div ref={sectionRef}>
-      <div style={{ backgroundColor: "#000000", minHeight: "100vh" }}>
-        {/* Button */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "40px",
-          }}
-        >
-          <button
+    <div className="pl-16 pr-16" style={{ backgroundColor: "#000000" }}>
+      <div ref={sectionRef}>
+        <div style={{ backgroundColor: "#000000", minHeight: "100vh" }}>
+          {/* Header */}
+          <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
+            <button style={{ backgroundColor: "#ff73003b", color: "#fd7302", padding: "1px 12px", fontSize: "13px", borderRadius: "20px", border: "1px solid #ff5100" }}>
+              . Key Features
+            </button>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "20px", gap: "10px" }}>
+            <h1 style={{ color: "white", fontSize: "50px" }}>AIS 140 GPS Tracker – Key Features</h1>
+            <h6 style={{ color: "#c0c0c0e7" }}>Comprehensive tracking capabilities designed for compliance and operational excellence.</h6>
+            {isAutoScrolling && <div style={{ color: "#ff7300", marginTop: "10px" }}>Auto-scrolling through features...</div>}
+          </div>
+
+          {/* Scrollable Cards */}
+          <div
+            ref={scrollRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
             style={{
-              alignContent: "center",
-              backgroundColor: "#ff9100d7",
-              color: "#81542e",
-              padding: "1px 12px",
-              fontSize: "13px",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              border: "1px solid #ff5100",
+              display: "flex",
+              overflowX: "auto",
+              gap: `${gap}px`,
+              padding: `0 ${containerPadding}px`,
+              scrollbarWidth: "none",
+              cursor: isDragging ? "grabbing" : "grab",
+              userSelect: isDragging ? "none" : "auto",
+              opacity: isAutoScrolling ? 0.9 : 1,
+              transition: "opacity 0.3s ease",
+              WebkitOverflowScrolling: "touch",
             }}
           >
-            . Key Features
-          </button>
-        </div>
-
-        {/* Heading */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            padding: "20px",
-            gap: "10px",
-          }}
-        >
-          <h1 style={{ color: "white", fontSize: "50px" }}>
-            AIS 140 GPS Tracker – Key Features
-          </h1>
-          <h6 style={{ color: "#c0c0c0e7" }}>
-            Comprehensive tracking capabilities designed for compliance and
-            operational excellence.
-          </h6>
-          {isAutoScrolling && (
-            <div style={{ color: "#ff7300", marginTop: "10px" }}>
-              Auto-scrolling through features...
-            </div>
-          )}
-        </div>
-
-        {/* Scrollable Cards with Mouse Swipe - gap-x-10 (40px gap) */}
-        <div
-          ref={scrollRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          style={{
-            display: "flex",
-            overflowX: "auto",
-            gap: "40px",
-            padding: "40px",
-            scrollbarWidth: "none",
-            cursor: isDragging ? "grabbing" : "grab",
-            userSelect: isDragging ? "none" : "auto",
-            opacity: isAutoScrolling ? 0.9 : 1,
-            transition: "opacity 0.3s ease",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
-          {clonedCards.map((_, index) => (
-            <div
-              key={index}
-              className="card"
-              style={{
-                minWidth: "250px",
-                height: "200px",
-                backgroundColor: "#111",
-                border: "1px solid #333",
-                borderRadius: "10px",
-                padding: "15px",
-                flexShrink: 0,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                gap: "10px",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-              }}
-            >
-              <div>
+            {clonedCards.map((_, index) => (
+              <div
+                key={index}
+                className="card"
+                style={{
+                  minWidth: `${cardWidth}px`,
+                  height: "200px",
+                  backgroundColor: "#111",
+                  border: currentCardIndex === (index % cards.length) && !isAutoScrolling 
+                    ? "2px solid #ff7300" 
+                    : "1px solid #333",
+                  borderRadius: "10px",
+                  padding: "15px",
+                  flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  gap: "10px",
+                  transition: "all 0.3s ease",
+                  transform: currentCardIndex === (index % cards.length) && !isAutoScrolling 
+                    ? "scale(1.02)" 
+                    : "scale(1)",
+                }}
+              >
                 <Lock size={30} color="#ff7300" />
+                <h1 style={{ color: "white", fontSize: "18px" }} className="card-title">
+                  Feature {(index % cards.length) + 1}
+                </h1>
+                <p style={{ color: "#aaa", fontSize: "14px" }} className="card-description">
+                  This is a sample description for feature {(index % cards.length) + 1}.
+                </p>
               </div>
+            ))}
+          </div>
 
-              <h1
-                style={{
-                  color: "white",
-                  fontSize: "18px",
-                  transition: "0.3s",
-                }}
-                className="card-title"
-              >
-                Feature {(index % cards.length) + 1}
-              </h1>
-
-              <p
-                style={{
-                  color: "#aaa",
-                  fontSize: "14px",
-                  transition: "0.3s",
-                }}
-                className="card-description"
-              >
-                This is a sample description for feature {(index % cards.length) + 1}.
-              </p>
-            </div>
-          ))}
+          {/* Navigation */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginTop: "20px", marginBottom: "40px" }}>
+            <button 
+              onClick={prevCard} 
+              className="nav-button" 
+              style={{ 
+                width: "50px", 
+                height: "50px", 
+                borderRadius: "50%", 
+                backgroundColor: "#333", 
+                color: "white", 
+                border: "none", 
+                fontSize: "24px", 
+                cursor: "pointer", 
+                transition: "all 0.3s ease", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                opacity: !hasAutoScrolled ? 0.5 : 1,
+                pointerEvents: !hasAutoScrolled ? "none" : "auto"
+              }}
+              disabled={!hasAutoScrolled}
+            >
+              ←
+            </button>
+            <button 
+              onClick={nextCard} 
+              className="nav-button" 
+              style={{ 
+                width: "50px", 
+                height: "50px", 
+                borderRadius: "50%", 
+                backgroundColor: "#333", 
+                color: "white", 
+                border: "none", 
+                fontSize: "24px", 
+                cursor: "pointer", 
+                transition: "all 0.3s ease", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                opacity: !hasAutoScrolled ? 0.5 : 1,
+                pointerEvents: !hasAutoScrolled ? "none" : "auto"
+              }}
+              disabled={!hasAutoScrolled}
+            >
+              →
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Styles - Hover effects only on cursor hover */}
-      <style>
-        {`
+        <style>{`
           .card:hover {
-            background-color: #ff730041 !important;
+            background-color: #ff7300 !important;
             border-color: #ff7300 !important;
-            transform: scale(1.05);
+            transform: scale(1.05) !important;
           }
-
-          .card:hover .card-title {
-            color: #000 !important;
-          }
-
+          .card:hover .card-title,
           .card:hover .card-description {
             color: #000 !important;
           }
-
+          .nav-button:hover {
+            background-color: #ff7300 !important;
+            color: #000 !important;
+            transform: scale(1.1);
+          }
           div::-webkit-scrollbar {
             display: none;
           }
-          
           .card {
             transition: all 0.3s ease;
           }
-        `}
-      </style>
+        `}</style>
+      </div>
     </div>
   );
 };
