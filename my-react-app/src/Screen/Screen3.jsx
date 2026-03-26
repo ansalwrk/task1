@@ -1,38 +1,297 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Lock } from "lucide-react";
 
 export const Screen3 = () => {
   const cards = Array.from({ length: 8 });
-
+  const sectionRef = useRef(null);
   const scrollRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [dragVelocity, setDragVelocity] = useState(0);
+  const [lastDragTime, setLastDragTime] = useState(0);
+  const [lastDragX, setLastDragX] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isSnapping, setIsSnapping] = useState(false);
 
+  // Clone cards for infinite loop effect
+  const clonedCards = [...cards, ...cards, ...cards];
+  const cardWidth = 270; // 250px minWidth + 20px gap
+
+  // Intersection Observer to detect when section comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAutoScrolled && !isAutoScrolling) {
+            startAutoScroll();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasAutoScrolled, isAutoScrolling]);
+
+  // Center snap detection while scrolling
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (isAutoScrolling || isSnapping) return;
+      
+      const scrollPosition = container.scrollLeft;
+      const cardElements = container.children;
+      
+      // Find which card is closest to center
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      for (let i = 0; i < cardElements.length; i++) {
+        const card = cardElements[i];
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        const viewportCenter = scrollPosition + (container.clientWidth / 2);
+        const distance = Math.abs(cardCenter - viewportCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = i;
+        }
+      }
+      
+      // Calculate actual index
+      const actualIndex = closestIndex % cards.length;
+      setActiveIndex(actualIndex);
+      
+      // Handle infinite loop reset
+      const totalWidth = container.scrollWidth;
+      const cloneSetWidth = totalWidth / 3;
+      
+      if (scrollPosition <= cloneSetWidth * 0.05) {
+        container.scrollLeft = cloneSetWidth;
+      } else if (scrollPosition >= cloneSetWidth * 1.95) {
+        container.scrollLeft = cloneSetWidth;
+      }
+    };
+    
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [cards.length, isAutoScrolling, isSnapping]);
+
+  // Snap to center function with momentum
+  const snapToNearestCard = () => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling) return;
+    
+    setIsSnapping(true);
+    const cardElements = container.children;
+    let closestCard = null;
+    let minDistance = Infinity;
+    let closestIndex = 0;
+    
+    for (let i = 0; i < cardElements.length; i++) {
+      const card = cardElements[i];
+      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+      const viewportCenter = container.scrollLeft + (container.clientWidth / 2);
+      const distance = Math.abs(cardCenter - viewportCenter);
+      
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
+        closestIndex = i;
+      }
+    }
+    
+    if (closestCard) {
+      const scrollTo = closestCard.offsetLeft - (container.clientWidth / 2) + (closestCard.offsetWidth / 2);
+      container.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+      
+      // Update active index after snap
+      setTimeout(() => {
+        const actualIndex = closestIndex % cards.length;
+        setActiveIndex(actualIndex);
+        setIsSnapping(false);
+      }, 300);
+    } else {
+      setIsSnapping(false);
+    }
+  };
+
+  const startAutoScroll = () => {
+    if (!scrollRef.current || hasAutoScrolled) return;
+
+    setIsAutoScrolling(true);
+    const container = scrollRef.current;
+    const totalWidth = container.scrollWidth;
+    const middleSetStart = totalWidth / 3;
+    const targetPosition = middleSetStart + (cards.length * cardWidth);
+    
+    let startPosition = container.scrollLeft;
+    let startTime = null;
+    const duration = 3000;
+    
+    const animateScroll = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      const newPosition = startPosition + (targetPosition - startPosition) * easeOutCubic;
+      container.scrollLeft = newPosition;
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      } else {
+        container.scrollLeft = targetPosition;
+        setIsAutoScrolling(false);
+        setHasAutoScrolled(true);
+        
+        setTimeout(() => {
+          const middlePosition = totalWidth / 3;
+          container.scrollLeft = middlePosition;
+          snapToNearestCard();
+        }, 100);
+      }
+    };
+    
+    requestAnimationFrame(animateScroll);
+  };
+
+  // Mouse swipe handlers with momentum
   const handleMouseDown = (e) => {
-    if (e.button !== 2) return; // ✅ RIGHT CLICK ONLY
-
+    if (isAutoScrolling || !hasAutoScrolled) return;
+    if (e.button !== 0) return;
+    
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
+    setDragVelocity(0);
+    setLastDragTime(Date.now());
+    setLastDragX(e.pageX);
+    
+    // Disable smooth scrolling during drag
+    scrollRef.current.style.scrollBehavior = 'auto';
+    
+    e.preventDefault();
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
-
+    if (!isDragging || isAutoScrolling) return;
+    
     e.preventDefault();
+    const currentTime = Date.now();
+    const currentX = e.pageX;
+    const deltaX = currentX - lastDragX;
+    const deltaTime = currentTime - lastDragTime;
+    
+    // Calculate velocity (pixels per millisecond)
+    if (deltaTime > 0) {
+      const velocity = (deltaX / deltaTime) * 16; // Convert to pixels per frame (approx 60fps)
+      setDragVelocity(velocity);
+    }
+    
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 1.2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
+    
+    setLastDragX(currentX);
+    setLastDragTime(currentTime);
   };
 
-  const stopDragging = () => {
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    
     setIsDragging(false);
+    
+    // Apply momentum if velocity is significant
+    if (Math.abs(dragVelocity) > 0.2 && !isAutoScrolling) {
+      const container = scrollRef.current;
+      const initialScrollLeft = container.scrollLeft;
+      let momentum = dragVelocity * 15;
+      let startTime = null;
+      let animationFrame;
+      
+      const applyMomentum = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const duration = 500; // Momentum duration in ms
+        
+        if (elapsed < duration && Math.abs(momentum) > 0.5) {
+          const progress = 1 - (elapsed / duration);
+          const easeOut = Math.pow(progress, 2);
+          const currentMomentum = momentum * easeOut;
+          
+          container.scrollLeft = initialScrollLeft + currentMomentum;
+          
+          // Reduce momentum gradually
+          momentum *= 0.95;
+          
+          animationFrame = requestAnimationFrame(applyMomentum);
+        } else {
+          cancelAnimationFrame(animationFrame);
+          // Snap to nearest card after momentum ends
+          snapToNearestCard();
+        }
+      };
+      
+      animationFrame = requestAnimationFrame(applyMomentum);
+    } else {
+      // Snap to nearest card immediately
+      snapToNearestCard();
+    }
+    
+    setDragVelocity(0);
   };
+
+  // Prevent vertical scrolling while auto-scrolling
+  useEffect(() => {
+    const preventVerticalScroll = (e) => {
+      if (isAutoScrolling) {
+        e.preventDefault();
+      }
+    };
+
+    if (isAutoScrolling) {
+      window.addEventListener('wheel', preventVerticalScroll, { passive: false });
+      document.body.style.overflow = 'hidden';
+    } else {
+      window.removeEventListener('wheel', preventVerticalScroll);
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      window.removeEventListener('wheel', preventVerticalScroll);
+      document.body.style.overflow = '';
+    };
+  }, [isAutoScrolling]);
+
+  // Clean up drag state on unmount
+  useEffect(() => {
+    return () => {
+      if (isDragging) {
+        setIsDragging(false);
+      }
+    };
+  }, [isDragging]);
 
   return (
-    <>
-      <div style={{ backgroundColor: "#000000" }}>
+    <div ref={sectionRef}>
+      <div style={{ backgroundColor: "#000000", minHeight: "100vh" }}>
         {/* Button */}
         <div
           style={{
@@ -75,46 +334,69 @@ export const Screen3 = () => {
             Comprehensive tracking capabilities designed for compliance and
             operational excellence.
           </h6>
+          {isAutoScrolling && (
+            <div style={{ color: "#ff7300", marginTop: "10px" }}>
+              Auto-scrolling through features...
+            </div>
+          )}
+          {!isAutoScrolling && hasAutoScrolled && (
+            <div style={{ color: "#ff7300", marginTop: "10px", fontSize: "14px" }}>
+              Currently viewing: Feature {activeIndex + 1} of {cards.length}
+              <br />
+              <span style={{ fontSize: "12px", color: "#888" }}>
+                Click and drag to swipe | Cards snap to center with momentum
+              </span>
+            </div>
+          )}
         </div>
 
-        {/* Scrollable Cards */}
+        {/* Scrollable Cards with Mouse Swipe */}
         <div
           ref={scrollRef}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
-          onMouseUp={stopDragging}
-          onMouseLeave={stopDragging}
-          onContextMenu={(e) => e.preventDefault()} // 🚀 disable right-click menu
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
           style={{
             display: "flex",
             overflowX: "auto",
             gap: "20px",
             padding: "40px",
-            scrollSnapType: "x mandatory",
             scrollbarWidth: "none",
             cursor: isDragging ? "grabbing" : "grab",
+            userSelect: isDragging ? "none" : "auto",
+            opacity: isAutoScrolling ? 0.9 : 1,
+            transition: "opacity 0.3s ease",
+            WebkitOverflowScrolling: "touch",
           }}
         >
-          {cards.map((_, index) => (
+          {clonedCards.map((_, index) => (
             <div
               key={index}
+              className={`card ${activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging ? 'active' : ''}`}
               style={{
                 minWidth: "250px",
                 height: "200px",
                 backgroundColor: "#111",
-                border: "1px solid #333",
+                border: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging 
+                  ? "2px solid #ff7300" 
+                  : "1px solid #333",
                 borderRadius: "10px",
                 padding: "15px",
                 flexShrink: 0,
-                scrollSnapAlign: "start",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 gap: "10px",
-                transition: "all 0.4s ease",
+                transition: "all 0.3s ease",
                 cursor: "pointer",
+                transform: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging 
+                  ? "scale(1.05)" 
+                  : "scale(1)",
+                boxShadow: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging
+                  ? "0 0 20px rgba(255, 115, 0, 0.3)"
+                  : "none",
               }}
-              className="card"
             >
               <div>
                 <Lock size={30} color="#ff7300" />
@@ -128,7 +410,7 @@ export const Screen3 = () => {
                 }}
                 className="card-title"
               >
-                Feature {index + 1}
+                Feature {(index % cards.length) + 1}
               </h1>
 
               <p
@@ -137,19 +419,20 @@ export const Screen3 = () => {
                   fontSize: "14px",
                 }}
               >
-                This is a sample description for feature {index + 1}.
+                This is a sample description for feature {(index % cards.length) + 1}.
               </p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Hover Styles */}
+      {/* Styles */}
       <style>
         {`
           .card:hover {
             background-color: #ff7300;
             border-color: #ff7300;
+            transform: scale(1.05) !important;
           }
 
           .card:hover .card-title {
@@ -163,8 +446,12 @@ export const Screen3 = () => {
           div::-webkit-scrollbar {
             display: none;
           }
+          
+          .card {
+            transition: all 0.3s ease;
+          }
         `}
       </style>
-    </>
+    </div>
   );
 };
