@@ -1,3 +1,4 @@
+import { Lock   }from 'lucide-react';
 export const Screen3 = () => {
   return (
 <>
@@ -29,50 +30,54 @@ style={{
   </div>
   
 
+{/* fjbvrvrvfbtfgbjf */}
+<div className="grid grid-cols-2 gap-10 items-center justify-items-center ">
+  
 
-<div class="grid grid-cols-4 gap-10 ">
+<div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
+      <div style={{    backgroundColor: "#ff7b00",display:"flex",
+       color: "#ffffff",justifyContent:"left", width:"20px",height:"auto",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800",}}><Lock /> </div>
+</div>
+</div>
 
-<div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
+<div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
 .......................
 </div>
 </div>
 
-<div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
+<div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
 .......................
 </div>
 </div>
 
-<div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
+<div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
+.......................
+</div>
+</div><div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
+.......................
+</div>
+</div><div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
+.......................
+</div>
+</div><div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray "> 
+<div className="m-3 grid grid-cols-1">
 .......................
 </div>
 </div>
 
-<div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
-.......................
-</div>
-</div><div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
-.......................
-</div>
-</div><div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
-.......................
-</div>
-</div><div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray "> 
-<div class="m-3 grid grid-cols-1">
-.......................
-</div>
-</div>
-
-<div class="rounded-[20px] px-5 h-60 bg-black outline outline-gray">
-   <div class="m-3 grid grid-cols-1">
+<div className="rounded-[20px] px-5 h-60 w-70 bg-black outline outline-gray">
+   <div className="m-3 grid grid-cols-1">
 
 </div>
 </div>
+
 </div>
 
 <div>

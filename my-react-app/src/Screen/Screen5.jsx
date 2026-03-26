@@ -2,8 +2,7 @@ import { Bus,Van,Car,FlaskConical,Building2   }from 'lucide-react';
 export const Screen5 = () => {
   return (
 <>
-<div
-        style={{  overflow: "hidden",  backgroundColor: "#1b1b1b"  }}>
+<div className='all' style={{  overflow: "hidden",  backgroundColor: "#1b1b1b"  }}>
 
 
 
