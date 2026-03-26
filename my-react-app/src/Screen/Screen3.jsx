@@ -18,7 +18,7 @@ export const Screen3 = () => {
 
   // Clone cards for infinite loop effect
   const clonedCards = [...cards, ...cards, ...cards];
-  const cardWidth = 270; // 250px minWidth + 20px gap
+  const cardWidth = 290; // 250px minWidth + 40px gap
 
   // Intersection Observer to detect when section comes into view
   useEffect(() => {
@@ -201,7 +201,7 @@ export const Screen3 = () => {
     
     // Calculate velocity (pixels per millisecond)
     if (deltaTime > 0) {
-      const velocity = (deltaX / deltaTime) * 16; // Convert to pixels per frame (approx 60fps)
+      const velocity = (deltaX / deltaTime) * 16;
       setDragVelocity(velocity);
     }
     
@@ -229,7 +229,7 @@ export const Screen3 = () => {
       const applyMomentum = (timestamp) => {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
-        const duration = 500; // Momentum duration in ms
+        const duration = 500;
         
         if (elapsed < duration && Math.abs(momentum) > 0.5) {
           const progress = 1 - (elapsed / duration);
@@ -238,20 +238,17 @@ export const Screen3 = () => {
           
           container.scrollLeft = initialScrollLeft + currentMomentum;
           
-          // Reduce momentum gradually
           momentum *= 0.95;
           
           animationFrame = requestAnimationFrame(applyMomentum);
         } else {
           cancelAnimationFrame(animationFrame);
-          // Snap to nearest card after momentum ends
           snapToNearestCard();
         }
       };
       
       animationFrame = requestAnimationFrame(applyMomentum);
     } else {
-      // Snap to nearest card immediately
       snapToNearestCard();
     }
     
@@ -303,8 +300,8 @@ export const Screen3 = () => {
           <button
             style={{
               alignContent: "center",
-              backgroundColor: "#ff73003b",
-              color: "#fd7302",
+              backgroundColor: "#ff9100d7",
+              color: "#81542e",
               padding: "1px 12px",
               fontSize: "13px",
               borderRadius: "20px",
@@ -339,18 +336,9 @@ export const Screen3 = () => {
               Auto-scrolling through features...
             </div>
           )}
-          {!isAutoScrolling && hasAutoScrolled && (
-            <div style={{ color: "#ff7300", marginTop: "10px", fontSize: "14px" }}>
-              Currently viewing: Feature {activeIndex + 1} of {cards.length}
-              <br />
-              <span style={{ fontSize: "12px", color: "#888" }}>
-                Click and drag to swipe | Cards snap to center with momentum
-              </span>
-            </div>
-          )}
         </div>
 
-        {/* Scrollable Cards with Mouse Swipe */}
+        {/* Scrollable Cards with Mouse Swipe - gap-x-10 (40px gap) */}
         <div
           ref={scrollRef}
           onMouseDown={handleMouseDown}
@@ -360,7 +348,7 @@ export const Screen3 = () => {
           style={{
             display: "flex",
             overflowX: "auto",
-            gap: "20px",
+            gap: "40px",
             padding: "40px",
             scrollbarWidth: "none",
             cursor: isDragging ? "grabbing" : "grab",
@@ -373,14 +361,12 @@ export const Screen3 = () => {
           {clonedCards.map((_, index) => (
             <div
               key={index}
-              className={`card ${activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging ? 'active' : ''}`}
+              className="card"
               style={{
                 minWidth: "250px",
                 height: "200px",
                 backgroundColor: "#111",
-                border: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging 
-                  ? "2px solid #ff7300" 
-                  : "1px solid #333",
+                border: "1px solid #333",
                 borderRadius: "10px",
                 padding: "15px",
                 flexShrink: 0,
@@ -390,12 +376,6 @@ export const Screen3 = () => {
                 gap: "10px",
                 transition: "all 0.3s ease",
                 cursor: "pointer",
-                transform: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging 
-                  ? "scale(1.05)" 
-                  : "scale(1)",
-                boxShadow: activeIndex === (index % cards.length) && !isAutoScrolling && !isDragging
-                  ? "0 0 20px rgba(255, 115, 0, 0.3)"
-                  : "none",
               }}
             >
               <div>
@@ -417,7 +397,9 @@ export const Screen3 = () => {
                 style={{
                   color: "#aaa",
                   fontSize: "14px",
+                  transition: "0.3s",
                 }}
+                className="card-description"
               >
                 This is a sample description for feature {(index % cards.length) + 1}.
               </p>
@@ -426,21 +408,21 @@ export const Screen3 = () => {
         </div>
       </div>
 
-      {/* Styles */}
+      {/* Styles - Hover effects only on cursor hover */}
       <style>
         {`
           .card:hover {
-            background-color: #ff7300;
-            border-color: #ff7300;
-            transform: scale(1.05) !important;
+            background-color: #ff730041 !important;
+            border-color: #ff7300 !important;
+            transform: scale(1.05);
           }
 
           .card:hover .card-title {
-            color: #000;
+            color: #000 !important;
           }
 
-          .card:hover p {
-            color: #000;
+          .card:hover .card-description {
+            color: #000 !important;
           }
 
           div::-webkit-scrollbar {
