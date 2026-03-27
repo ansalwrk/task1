@@ -62,6 +62,8 @@ export const Screen3 = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [autoScrollTimer, setAutoScrollTimer] = useState(null);
+  const [userInteracted, setUserInteracted] = useState(false);
   
   const cardWidth = 280;
   const gap = 24;
@@ -157,7 +159,88 @@ export const Screen3 = () => {
     }
   };
 
-  // Initial scroll position - start in the middle set
+  // Auto scroll function - moves one card from right to left
+  const autoScrollNext = () => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling || isDragging || userInteracted) return;
+    
+    // Get current scroll position
+    const currentScroll = container.scrollLeft;
+    const currentFirstIndex = Math.round(currentScroll / totalCardWidth);
+    const currentCardMod = currentFirstIndex % cards.length;
+    
+    // Calculate target card index (next card)
+    const targetCardIndex = (currentCardMod + 1) % cards.length;
+    
+    // Calculate the difference
+    let diff = targetCardIndex - currentCardMod;
+    if (diff <= 0) diff += cards.length;
+    
+    // Calculate target first index
+    let targetFirstIndex = currentFirstIndex + diff;
+    
+    // Get the middle set boundaries
+    const singleSetWidth = cards.length * totalCardWidth;
+    const middleSetStart = singleSetWidth;
+    const middleSetEnd = singleSetWidth * 2;
+    
+    // Calculate target scroll position
+    let targetScroll = targetFirstIndex * totalCardWidth;
+    
+    // Ensure target scroll is within the visible range
+    const minScroll = middleSetStart - (cardsToShow * totalCardWidth);
+    const maxScroll = middleSetEnd;
+    
+    if (targetScroll < minScroll) {
+      targetScroll += singleSetWidth;
+    } else if (targetScroll > maxScroll) {
+      targetScroll -= singleSetWidth;
+    }
+    
+    // Smooth scroll to target
+    smoothScrollTo(targetScroll, 500);
+    setCurrentCardIndex(targetCardIndex);
+    
+    // After scrolling completes, ensure proper position
+    setTimeout(() => {
+      if (!isAutoScrolling && !isDragging && !userInteracted) {
+        handleInfiniteLoop();
+      }
+    }, 520);
+  };
+
+  // Start auto-scroll timer
+  const startAutoScroll = () => {
+    if (autoScrollTimer) {
+      clearInterval(autoScrollTimer);
+    }
+    const timer = setInterval(() => {
+      autoScrollNext();
+    }, 3000);
+    setAutoScrollTimer(timer);
+  };
+
+  // Stop auto-scroll timer
+  const stopAutoScroll = () => {
+    if (autoScrollTimer) {
+      clearInterval(autoScrollTimer);
+      setAutoScrollTimer(null);
+    }
+  };
+
+  // Reset user interaction and restart auto-scroll
+  const handleUserInteraction = () => {
+    setUserInteracted(true);
+    stopAutoScroll();
+    
+    // Restart auto-scroll after 5 seconds of no interaction
+    setTimeout(() => {
+      setUserInteracted(false);
+      startAutoScroll();
+    }, 5000);
+  };
+
+  // Initial scroll position and start auto-scroll
   useEffect(() => {
     const container = scrollRef.current;
     if (container) {
@@ -170,6 +253,14 @@ export const Screen3 = () => {
       const actualCardIndex = firstVisibleIndex % cards.length;
       setCurrentCardIndex(actualCardIndex);
     }
+    
+    // Start auto-scroll
+    startAutoScroll();
+    
+    // Cleanup on unmount
+    return () => {
+      stopAutoScroll();
+    };
   }, []);
 
   // Handle scroll events
@@ -212,6 +303,9 @@ export const Screen3 = () => {
   const scrollToCard = (direction) => {
     const container = scrollRef.current;
     if (!container || isAutoScrolling) return;
+
+    // User clicked button, handle interaction
+    handleUserInteraction();
 
     // Get current scroll position
     const currentScroll = container.scrollLeft;
@@ -269,6 +363,7 @@ export const Screen3 = () => {
 
   const handleMouseDown = (e) => {
     if (e.button !== 0 || isAutoScrolling) return;
+    handleUserInteraction(); // User is interacting
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);

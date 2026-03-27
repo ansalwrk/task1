@@ -1,3 +1,6 @@
+
+import {   Check , X }from 'lucide-react';
+
 export const Screen2 = () => {  
   return (
 <>
@@ -41,8 +44,8 @@ style={{
     <div style={{ backgroundColor: "#11111100",  padding: "10px", borderRadius: "20px",
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
-      <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+      <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X size={30} color="#ff0000" /></div>
        <h4  style={{color:"white"}}> Without AIS140</h4><br/>
     </div>
 
@@ -53,7 +56,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
        <h6  style={{color:"#ffffff9c"}}>No real-time visibility of vehicle location</h6>
     </div>
 
@@ -64,7 +67,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X color="#ff0000" /></div>
        <h6  style={{color:"#ffffff9c"}}>Delayed response during emergencies or accidents</h6>
     </div>
 
@@ -75,7 +78,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X color="#ff0000" /></div>
        <h6  style={{color:"#ffffff9c"}}>Difficulty meeting government compliance requirements</h6>
     </div>
 
@@ -87,7 +90,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
        <h6  style={{color:"#ffffff9c"}}>Poor monitoring of driver behavior</h6>
     </div>
 
@@ -98,7 +101,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}>❌</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
        <h6  style={{color:"#ffffff9c"}}> Limited control over vehicle misuse or unauthorized movement</h6>
     </div>
 
@@ -124,8 +127,8 @@ style={{
     <div style={{ backgroundColor: "#11111100",  padding: "10px", borderRadius: "20px",
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
-      <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "15px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+      <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "5px 10px",
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check size={30} color="#37ff00" /></div>
        <h4  style={{color:"white"}}> Without AIS140</h4><br/>
     </div>
 
@@ -134,7 +137,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Real-time visibility of all vehicles 24/7</h6>
     </div>
 
@@ -142,7 +145,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Instant emergency alerts and SOS response</h6>
     </div>    
 
@@ -152,7 +155,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Full government compliance guaranteed</h6>
     </div>
 
@@ -161,7 +164,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Complete driver behavior monitoring</h6>
     </div>
 
@@ -170,7 +173,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0df5", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}>✔️</div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Full control with geofencing and route tracking</h6>
     </div>
 
