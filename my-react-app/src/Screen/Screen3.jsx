@@ -60,27 +60,114 @@ export const Screen3 = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [dragVelocity, setDragVelocity] = useState(0);
-  const [lastDragTime, setLastDragTime] = useState(0);
-  const [lastDragX, setLastDragX] = useState(0);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
-
-  const clonedCards = [...cards, ...cards, ...cards, ...cards, ...cards];
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  
   const cardWidth = 280;
   const gap = 24;
   const totalCardWidth = cardWidth + gap;
+  const cardsToShow = 4;
 
-  // Initial scroll position
+  // Create 3 sets of cards for infinite loop
+  const clonedCards = [...cards, ...cards, ...cards];
+
+  // Smooth scroll function with easing
+  const smoothScrollTo = (targetScroll, duration = 400, callback = null) => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const startScroll = container.scrollLeft;
+    const distance = targetScroll - startScroll;
+    const startTime = performance.now();
+    
+    setIsAutoScrolling(true);
+    
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = easeOutCubic(progress);
+      
+      const newScroll = startScroll + distance * easeProgress;
+      container.scrollLeft = newScroll;
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setIsAutoScrolling(false);
+        if (callback) callback();
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  };
+
+  // Function to snap to valid position showing exactly 4 full cards
+  const snapToValidPosition = () => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling) return;
+
+    const currentScroll = container.scrollLeft;
+    
+    // Calculate which card should be the first visible card
+    let targetIndex = Math.round(currentScroll / totalCardWidth);
+    const maxStartIndex = clonedCards.length - cardsToShow;
+    
+    // Ensure targetIndex stays within bounds
+    targetIndex = Math.max(0, Math.min(targetIndex, maxStartIndex));
+    
+    const targetScroll = targetIndex * totalCardWidth;
+    
+    if (Math.abs(currentScroll - targetScroll) > 5) {
+      smoothScrollTo(targetScroll, 300);
+      
+      // Update current card index based on first visible card
+      const firstVisibleCardIndex = targetIndex % cards.length;
+      setCurrentCardIndex(firstVisibleCardIndex);
+    } else {
+      const firstVisibleCardIndex = targetIndex % cards.length;
+      setCurrentCardIndex(firstVisibleCardIndex);
+    }
+  };
+
+  // Handle infinite loop by resetting position
+  const handleInfiniteLoop = () => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling) return;
+
+    const scrollPos = container.scrollLeft;
+    const singleSetWidth = cards.length * totalCardWidth;
+    const totalWidth = container.scrollWidth;
+    const middleSetStart = singleSetWidth;
+    const middleSetEnd = singleSetWidth * 2;
+    
+    // If we're at the leftmost set (first clone set)
+    if (scrollPos < singleSetWidth) {
+      // Jump to the middle set at the same relative position
+      const newPos = scrollPos + singleSetWidth;
+      container.scrollLeft = newPos;
+    } 
+    // If we're at the rightmost set (last clone set)
+    else if (scrollPos >= middleSetEnd) {
+      // Jump to the middle set at the same relative position
+      const newPos = scrollPos - singleSetWidth;
+      container.scrollLeft = newPos;
+    }
+  };
+
+  // Initial scroll position - start in the middle set
   useEffect(() => {
     const container = scrollRef.current;
     if (container) {
-      const containerWidth = container.clientWidth;
-      const initialScroll =
-        (clonedCards.length / 3) * totalCardWidth -
-        containerWidth / 2 +
-        cardWidth / 2;
-      container.scrollLeft = initialScroll;
+      const singleSetWidth = cards.length * totalCardWidth;
+      const middlePosition = singleSetWidth;
+      container.scrollLeft = middlePosition;
+      
+      // Calculate initial card index
+      const firstVisibleIndex = Math.round(middlePosition / totalCardWidth);
+      const actualCardIndex = firstVisibleIndex % cards.length;
+      setCurrentCardIndex(actualCardIndex);
     }
   }, []);
 
@@ -89,154 +176,131 @@ export const Screen3 = () => {
     const container = scrollRef.current;
     if (!container) return;
 
+    let scrollTimeout;
+    
     const handleScroll = () => {
-      // Skip updating current card during programmatic smooth scroll
-      if (isProgrammaticScroll) return;
+      // Skip during auto scrolling
+      if (isAutoScrolling) return;
       
       const scrollPos = container.scrollLeft;
-      let closest = 0;
-      let minDist = Infinity;
-
-      Array.from(container.children).forEach((card, i) => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const viewCenter = scrollPos + container.clientWidth / 2;
-        const distance = Math.abs(cardCenter - viewCenter);
-
-        if (distance < minDist) {
-          minDist = distance;
-          closest = i;
-        }
-      });
-
-      setCurrentCardIndex(closest % cards.length);
-
-      const totalWidth = container.scrollWidth;
-      const cloneWidth = totalWidth / 5;
-      const threshold = cloneWidth;
-
-      if (scrollPos <= threshold) {
-        container.scrollLeft = cloneWidth * 2 + (scrollPos % cloneWidth);
-      } else if (scrollPos >= totalWidth - threshold) {
-        container.scrollLeft = cloneWidth * 2 + (scrollPos - (totalWidth - cloneWidth * 2));
-      }
-    };
-
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [isProgrammaticScroll, cards.length]);
-
-  const scrollToCard = (cardIndex) => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    setIsProgrammaticScroll(true);
-    
-    const cardElements = Array.from(container.children);
-    const middleStart = Math.floor(cardElements.length / 3);
-    const middleEnd = Math.floor((cardElements.length * 2) / 3);
-
-    let targetCard = cardElements.find(
-      (_, i) => i >= middleStart && i < middleEnd && i % cards.length === cardIndex
-    );
-
-    if (!targetCard) {
-      targetCard = cardElements.find((_, i) => i % cards.length === cardIndex);
-    }
-
-    if (targetCard) {
-      const containerWidth = container.clientWidth;
-      const targetCardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
-      const scrollTo = targetCardCenter - containerWidth / 2;
-
-      // Use smooth scrolling behavior
-      container.scrollTo({ 
-        left: scrollTo, 
-        behavior: "smooth" 
-      });
       
-      setCurrentCardIndex(cardIndex);
-
-      // Wait for smooth scroll to complete before re-enabling scroll handler
-      setTimeout(() => {
-        setIsProgrammaticScroll(false);
-        
-        // Fix infinite loop position after smooth scroll
-        const totalWidth = container.scrollWidth;
-        const cloneWidth = totalWidth / 5;
-        const currentScroll = container.scrollLeft;
-
-        if (currentScroll <= cloneWidth || currentScroll >= totalWidth - cloneWidth) {
-          container.scrollLeft =
-            currentScroll <= cloneWidth
-              ? cloneWidth * 2 + currentScroll
-              : cloneWidth * 2 - (totalWidth - currentScroll);
+      // Calculate which card is the first visible card during scrolling
+      const firstVisibleIndex = Math.round(scrollPos / totalCardWidth);
+      const actualCardIndex = firstVisibleIndex % cards.length;
+      setCurrentCardIndex(actualCardIndex);
+      
+      // Clear previous timeout
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      
+      // After scrolling stops, snap to valid position
+      scrollTimeout = setTimeout(() => {
+        if (!isDragging && !isAutoScrolling) {
+          snapToValidPosition();
+          // After snapping, handle infinite loop
+          setTimeout(() => handleInfiniteLoop(), 50);
         }
-      }, 600); // Slightly longer than the smooth scroll duration
+      }, 150);
+    };
+    
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [isDragging, isAutoScrolling]);
+
+  const scrollToCard = (direction) => {
+    const container = scrollRef.current;
+    if (!container || isAutoScrolling) return;
+
+    // Get current scroll position
+    const currentScroll = container.scrollLeft;
+    const currentFirstIndex = Math.round(currentScroll / totalCardWidth);
+    const currentCardMod = currentFirstIndex % cards.length;
+    
+    // Calculate target card index based on direction
+    let targetCardIndex;
+    if (direction === 'next') {
+      targetCardIndex = (currentCardMod + 1) % cards.length;
     } else {
-      setIsProgrammaticScroll(false);
+      targetCardIndex = (currentCardMod - 1 + cards.length) % cards.length;
     }
+    
+    // Calculate the difference
+    let diff = targetCardIndex - currentCardMod;
+    if (direction === 'next' && diff <= 0) diff += cards.length;
+    if (direction === 'prev' && diff >= 0) diff -= cards.length;
+    
+    // Calculate target first index
+    let targetFirstIndex = currentFirstIndex + diff;
+    
+    // Get the middle set boundaries
+    const singleSetWidth = cards.length * totalCardWidth;
+    const middleSetStart = singleSetWidth;
+    const middleSetEnd = singleSetWidth * 2;
+    
+    // Calculate target scroll position
+    let targetScroll = targetFirstIndex * totalCardWidth;
+    
+    // Ensure target scroll is within the visible range of the middle set
+    // But allow it to be slightly outside so the infinite loop can handle it
+    const minScroll = middleSetStart - (cardsToShow * totalCardWidth);
+    const maxScroll = middleSetEnd;
+    
+    if (targetScroll < minScroll) {
+      targetScroll += singleSetWidth;
+    } else if (targetScroll > maxScroll) {
+      targetScroll -= singleSetWidth;
+    }
+    
+    // Smooth scroll to target
+    smoothScrollTo(targetScroll, 500, () => {
+      // After scrolling, ensure we're in the middle set
+      handleInfiniteLoop();
+      // Snap to show exactly 4 cards
+      setTimeout(() => {
+        if (!isAutoScrolling) {
+          snapToValidPosition();
+        }
+      }, 100);
+    });
+    
+    setCurrentCardIndex(targetCardIndex);
   };
 
-  const nextCard = () => scrollToCard((currentCardIndex + 1) % cards.length);
-  const prevCard = () =>
-    scrollToCard((currentCardIndex - 1 + cards.length) % cards.length);
+  const nextCard = () => scrollToCard('next');
+  const prevCard = () => scrollToCard('prev');
 
   const handleMouseDown = (e) => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || isAutoScrolling) return;
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
-    setLastDragTime(Date.now());
-    setLastDragX(e.pageX);
-    scrollRef.current.style.scrollBehavior = "auto";
     e.preventDefault();
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
+    if (!isDragging || isAutoScrolling) return;
     e.preventDefault();
 
-    const now = Date.now();
-    const deltaX = e.pageX - lastDragX;
-    const deltaTime = now - lastDragTime;
-
-    if (deltaTime > 0) {
-      setDragVelocity((deltaX / deltaTime) * 16);
-    }
-
     const x = e.pageX - scrollRef.current.offsetLeft;
-    scrollRef.current.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    setLastDragX(e.pageX);
-    setLastDragTime(now);
+    scrollRef.current.scrollLeft = scrollLeft - (x - startX);
+    // Handle infinite loop during drag
+    handleInfiniteLoop();
   };
 
   const handleMouseUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
-
-    if (Math.abs(dragVelocity) > 0.2) {
-      const container = scrollRef.current;
-      let momentum = dragVelocity * 15;
-      let startTime = null;
-      let animationId = null;
-
-      const applyMomentum = (time) => {
-        if (!startTime) startTime = time;
-        const elapsed = time - startTime;
-
-        if (elapsed < 500 && Math.abs(momentum) > 0.5) {
-          container.scrollLeft = container.scrollLeft + momentum;
-          momentum *= 0.95;
-          animationId = requestAnimationFrame(applyMomentum);
-        } else {
-          if (animationId) cancelAnimationFrame(animationId);
-        }
-      };
-
-      animationId = requestAnimationFrame(applyMomentum);
-    }
-
-    setDragVelocity(0);
+    
+    // Immediately snap to valid position after swipe ends
+    setTimeout(() => {
+      if (!isAutoScrolling) {
+        snapToValidPosition();
+        // After snapping, ensure infinite loop
+        setTimeout(() => handleInfiniteLoop(), 50);
+      }
+    }, 10);
   };
 
   return (
@@ -257,7 +321,6 @@ export const Screen3 = () => {
             cursor: isDragging ? "grabbing" : "grab",
             userSelect: isDragging ? "none" : "auto",
             WebkitOverflowScrolling: "touch",
-            scrollBehavior: "smooth",
           }}
         >
           {clonedCards.map((card, index) => {
@@ -282,7 +345,7 @@ export const Screen3 = () => {
                   justifyContent: "center",
                   gap: "12px",
                   transition: "all 0.3s ease",
-                  transform: isActive ? "scale(1.02)" : "scale(1)",
+                  transform: isActive && !isAutoScrolling ? "scale(1.02)" : "scale(1)",
                 }}
               >
                 <div
@@ -304,7 +367,7 @@ export const Screen3 = () => {
                   className="card-title"
                   style={{
                     color: "white",
-                    fontSize: "16px",
+                    fontSize: "18px",
                     margin: 0,
                     fontWeight: "600",
                     lineHeight: "1.3",
@@ -345,9 +408,8 @@ export const Screen3 = () => {
               width: "50px",
               height: "50px",
               borderRadius: "50%",
-              
               color: "white",
-              backgroundColor:"#ff730021",
+              backgroundColor: "#ff730021",
               cursor: "pointer",
               transition: "all 0.3s ease",
               display: "flex",
@@ -368,7 +430,7 @@ export const Screen3 = () => {
               width: "50px",
               height: "50px",
               borderRadius: "50%",
-              backgroundColor:"#ff730021",
+              backgroundColor: "#ff730021",
               color: "white",
               border: "none",
               cursor: "pointer",
@@ -378,7 +440,7 @@ export const Screen3 = () => {
               justifyContent: "center",
               borderColor: "#c55900c0",
               borderWidth: "2px",
-              borderStyle: "solid",              
+              borderStyle: "solid",
             }}
           >
             <ArrowRight size={24} />
