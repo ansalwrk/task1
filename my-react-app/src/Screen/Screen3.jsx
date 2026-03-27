@@ -335,8 +335,8 @@ export const Screen3 = () => {
                   flexShrink: 0,
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "center",
-                  gap: "12px",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
                   transition: "all 0.3s ease",
                   transform: isActive && !isAutoScrolling ? "scale(1.02)" : "scale(1)",
                 }}
@@ -350,7 +350,8 @@ export const Screen3 = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: "8px",
+                    marginBottom: "16px",
+                    marginTop: "0px",
                   }}
                 >
                   <IconComponent size={30} color="#ffffff" />
@@ -362,8 +363,11 @@ export const Screen3 = () => {
                     color: "white",
                     fontSize: "18px",
                     margin: 0,
+                    marginBottom: "12px",
                     fontWeight: "600",
                     lineHeight: "1.3",
+                    textAlign: "left",
+                    width: "100%",
                   }}
                 >
                   {card.title}
@@ -376,6 +380,8 @@ export const Screen3 = () => {
                     fontSize: "13px",
                     margin: 0,
                     lineHeight: "1.4",
+                    textAlign: "left",
+                    width: "100%",
                   }}
                 >
                   {card.desc}
