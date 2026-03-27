@@ -80,6 +80,12 @@ export const Home = () => {
               display: "inline-block", 
               marginBottom: "15px" 
             }}>
+
+
+
+              
+
+
               Government Certified AIS 140 Devices
             </div>
 
