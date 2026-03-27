@@ -71,8 +71,8 @@ export const Screen3 = () => {
   // Create 3 sets of cards for infinite loop
   const clonedCards = [...cards, ...cards, ...cards];
 
-  // Smooth scroll function with easing
-  const smoothScrollTo = (targetScroll, duration = 400, callback = null) => {
+  // Enhanced smooth scroll function with better easing
+  const smoothScrollTo = (targetScroll, duration = 500) => {
     const container = scrollRef.current;
     if (!container) return;
 
@@ -82,12 +82,17 @@ export const Screen3 = () => {
     
     setIsAutoScrolling(true);
     
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    // Smoother easing function
+    const easeInOutCubic = (t) => {
+      return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
     
     const animate = (currentTime) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = easeOutCubic(progress);
+      const easeProgress = easeInOutCubic(progress);
       
       const newScroll = startScroll + distance * easeProgress;
       container.scrollLeft = newScroll;
@@ -96,7 +101,6 @@ export const Screen3 = () => {
         requestAnimationFrame(animate);
       } else {
         setIsAutoScrolling(false);
-        if (callback) callback();
       }
     };
     
@@ -119,8 +123,8 @@ export const Screen3 = () => {
     
     const targetScroll = targetIndex * totalCardWidth;
     
-    if (Math.abs(currentScroll - targetScroll) > 5) {
-      smoothScrollTo(targetScroll, 300);
+    if (Math.abs(currentScroll - targetScroll) > 2) {
+      smoothScrollTo(targetScroll, 350);
       
       // Update current card index based on first visible card
       const firstVisibleCardIndex = targetIndex % cards.length;
@@ -138,19 +142,16 @@ export const Screen3 = () => {
 
     const scrollPos = container.scrollLeft;
     const singleSetWidth = cards.length * totalCardWidth;
-    const totalWidth = container.scrollWidth;
     const middleSetStart = singleSetWidth;
     const middleSetEnd = singleSetWidth * 2;
     
     // If we're at the leftmost set (first clone set)
     if (scrollPos < singleSetWidth) {
-      // Jump to the middle set at the same relative position
       const newPos = scrollPos + singleSetWidth;
       container.scrollLeft = newPos;
     } 
     // If we're at the rightmost set (last clone set)
     else if (scrollPos >= middleSetEnd) {
-      // Jump to the middle set at the same relative position
       const newPos = scrollPos - singleSetWidth;
       container.scrollLeft = newPos;
     }
@@ -171,7 +172,7 @@ export const Screen3 = () => {
     }
   }, []);
 
-  // Handle scroll events and infinite loop
+  // Handle scroll events
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -196,10 +197,9 @@ export const Screen3 = () => {
       scrollTimeout = setTimeout(() => {
         if (!isDragging && !isAutoScrolling) {
           snapToValidPosition();
-          // After snapping, handle infinite loop
-          setTimeout(() => handleInfiniteLoop(), 50);
+          handleInfiniteLoop();
         }
-      }, 150);
+      }, 100);
     };
     
     container.addEventListener("scroll", handleScroll);
@@ -242,8 +242,7 @@ export const Screen3 = () => {
     // Calculate target scroll position
     let targetScroll = targetFirstIndex * totalCardWidth;
     
-    // Ensure target scroll is within the visible range of the middle set
-    // But allow it to be slightly outside so the infinite loop can handle it
+    // Ensure target scroll is within the visible range
     const minScroll = middleSetStart - (cardsToShow * totalCardWidth);
     const maxScroll = middleSetEnd;
     
@@ -253,19 +252,16 @@ export const Screen3 = () => {
       targetScroll -= singleSetWidth;
     }
     
-    // Smooth scroll to target
-    smoothScrollTo(targetScroll, 500, () => {
-      // After scrolling, ensure we're in the middle set
-      handleInfiniteLoop();
-      // Snap to show exactly 4 cards
-      setTimeout(() => {
-        if (!isAutoScrolling) {
-          snapToValidPosition();
-        }
-      }, 100);
-    });
-    
+    // Smooth scroll to target with longer duration for smoother motion
+    smoothScrollTo(targetScroll, 550);
     setCurrentCardIndex(targetCardIndex);
+    
+    // After scrolling completes, ensure proper position
+    setTimeout(() => {
+      if (!isAutoScrolling) {
+        handleInfiniteLoop();
+      }
+    }, 560);
   };
 
   const nextCard = () => scrollToCard('next');
@@ -285,20 +281,17 @@ export const Screen3 = () => {
 
     const x = e.pageX - scrollRef.current.offsetLeft;
     scrollRef.current.scrollLeft = scrollLeft - (x - startX);
-    // Handle infinite loop during drag
-    handleInfiniteLoop();
   };
 
   const handleMouseUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
     
-    // Immediately snap to valid position after swipe ends
+    // Snap to valid position after swipe ends
     setTimeout(() => {
       if (!isAutoScrolling) {
         snapToValidPosition();
-        // After snapping, ensure infinite loop
-        setTimeout(() => handleInfiniteLoop(), 50);
+        handleInfiniteLoop();
       }
     }, 10);
   };
