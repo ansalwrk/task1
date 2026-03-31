@@ -392,8 +392,8 @@ export const Screen3 = () => {
   };
 
   return (
-    <div className="pl-16 pr-16" style={{ backgroundColor: "#000000" }}>
-      <div style={{ backgroundColor: "#000000", minHeight: "100vh" }}>
+    <div className="pl-16 pr-16 " style={{ backgroundColor: "#000000" }}>
+      <div style={{ backgroundColor: "#000000", minHeight: "80vh" }}>
         <div
           ref={scrollRef}
           onMouseDown={handleMouseDown}

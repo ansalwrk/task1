@@ -6,7 +6,7 @@ return (
 
 
 
-<div style={{ backgroundColor:"#000000" , padding:"50px"}}>
+<div style={{ backgroundColor:"#130902" , padding:"50px"}}>
   
 
   
@@ -28,18 +28,8 @@ return (
                 Talk to Our Expert
               </button>
             </div>
-        
-        
-        
+     
         </div>
-
-
-
-
-
-
-
-
     </div>
   
 

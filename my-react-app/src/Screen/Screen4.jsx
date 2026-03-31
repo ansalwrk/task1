@@ -8,11 +8,12 @@ return (
 <>
 
 
-<div style={{
+<div style={{ 
 
-  backgroundColor:"#000000",}}     >       
+  backgroundColor:"#181310",}}     >       
  <div className="grid grid-cols-1 ml-4 md:ml-10">
            <div style={{ 
+
               backgroundColor: "#b3390067", 
               color: "#ff5100", 
               padding: "8px 16px",  
@@ -48,7 +49,7 @@ Benefits
     <div >
           <div className="grid gap-y-2 mr-10">
       
-          <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+          <div style={{ backgroundColor: "#353535a8",  padding: "5px", borderRadius: "20px",
                 border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
             <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
@@ -60,7 +61,7 @@ Benefits
             </div>
           <div >
             
-    <div style={{ backgroundColor: "#000000",  padding: "5x", borderRadius: "20px",
+    <div style={{ backgroundColor:"#353535a8",  padding: "5x", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
@@ -74,7 +75,7 @@ Benefits
     
 
     <div >
-    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+    <div style={{ backgroundColor: "#353535a8",  padding: "5px", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
@@ -88,7 +89,7 @@ Benefits
 
 
         <div >
-    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+    <div style={{ backgroundColor: "#353535a8",  padding: "5px", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
@@ -102,7 +103,7 @@ Benefits
 
 
         <div >
-    <div style={{ backgroundColor: "#000000",  padding: "5px", borderRadius: "20px",
+    <div style={{ backgroundColor: "#353535a8",  padding: "5px", borderRadius: "20px",
       border: "1px solid #504e4e",display:"flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
