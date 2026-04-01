@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import gpsLogo from "../assets/gps.png";
+import {PhoneCall,  }from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -147,7 +148,7 @@ export const Navbar = () => {
               padding: 20px !important;
             }
             /* Mobile menu button styles - better touch targets */
-            .nav-links button {
+             .nav-links button {
               width: 100%;
               text-align: center;
               padding: 14px 12px !important;
@@ -189,19 +190,23 @@ export const Navbar = () => {
           height: "80px",
           backgroundColor: "#000000",
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "center", // Added: center items vertically
+          justifyContent: "space-between", // Added: space between logo and menu
           zIndex: 1000,
           padding: "0 68px",
+          borderBottomColor:"#ffffff",
           boxSizing: "border-box",
         }}
       >
-        <div className="flex-justify-"></div>
-        <img
-          src={gpsLogo}
-          alt="Logo"
-          style={{ height: "45px", objectFit: "contain", maxWidth: "100%" }}
-        />
+        
+        {/* Logo Section - Left Side */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={gpsLogo}
+            alt="Logo"
+            style={{ height: "50px", objectFit: "contain", maxWidth: "100%" }}
+          />
+        </div>
 
         {/* Mobile Menu Toggle */}
         <div
@@ -213,6 +218,8 @@ export const Navbar = () => {
             gap: "6px",
             cursor: "pointer",
             zIndex: 1100,
+            alignContent:"center",
+            justifyContent:"center"
           }}
         >
           {[1, 2, 3].map((i) => (
@@ -223,19 +230,28 @@ export const Navbar = () => {
                 height: "3px",
                 background: "white",
                 transition: "0.4s",
+                
               }}
             />
           ))}
         </div>
 
-        {/* Navigation Links */}
+        {/* Navigation Links - Right Side */}
         <ul
           className="nav-links"
           style={{
             ...defaultNavLinksStyle,
             ...mobileTransformStyle,
+            margin: 0,
+            padding: 0,
+            
           }}
         >
+
+
+
+
+
           <li>
             <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
               Features
@@ -268,15 +284,13 @@ export const Navbar = () => {
               }}
               onClick={handleNavClick}
             >
-              <svg
-                style={{ width: "16px", color: "#f97316" }}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
+
+
+
+
+
+              
+                <PhoneCall color="#ff8800" />
               +91 9876543210
             </button>
           </li>
@@ -302,6 +316,8 @@ export const Navbar = () => {
 
       {/* Spacer to prevent content from hiding under navbar */}
       <div style={{ height: "80px" }}></div>
+      
+      
     </>
   );
 };

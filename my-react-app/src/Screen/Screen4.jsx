@@ -10,8 +10,8 @@ return (
 
 <div style={{ 
 
-  backgroundColor:"#181310",}}     >       
- <div className="grid grid-cols-1 ml-4 md:ml-10">
+  backgroundColor:"#181310",marginTop:"-6rem"}}     >       
+ <div className="grid grid-cols-1  ml-4 md:ml-10">
            <div style={{ 
 
               backgroundColor: "#b3390067", 
@@ -19,6 +19,7 @@ return (
               padding: "8px 16px",  
               borderRadius: "20px", 
               fontWeight: "bold", 
+              marginTop:"5rem",
               fontSize:"13px",
               display: "inline-block", 
               marginBottom: "15px",  width:"6%"
@@ -30,8 +31,9 @@ Benefits
 <div>
           <h1
             style={{
-              fontSize: "clamp(2rem, 5vw, 2.8rem)",
+              fontSize: "",
               color: "white",
+              fontWeight:"bolder",
               lineHeight: "1.2",
               margin: "0 0 20px 0",
             }}
@@ -139,34 +141,6 @@ Benefits
           }} 
         />
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 </div>

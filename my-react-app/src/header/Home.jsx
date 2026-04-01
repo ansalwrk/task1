@@ -1,10 +1,14 @@
 import React from "react";
+
 import hero from "../assets/hero-bg.jpg";
 import gps1 from "../assets/gps1.png";
 
+
 export const Home = () => {
   return (
-    <>
+    <> 
+    
+    <div className="font-sans ...">
       <style>
         {`
           /* Only things that physically cannot be inline */
@@ -34,11 +38,12 @@ export const Home = () => {
         className="hero-section" 
         style={{ 
           position: "relative", 
-          minHeight: "100vh", 
+          minHeight: "auto", 
           display: "flex", 
           alignItems: "flex-start",
           overflow: "hidden", 
-          backgroundColor: "#000" 
+           background: "linear-gradient(135deg, #000000 0%, rgba(0, 0, 0, 0.86) 100%)", 
+           opacity:"10"
         }}
       >
         {/* Background Image */}
@@ -50,7 +55,7 @@ export const Home = () => {
             top: 0, left: 0, 
             width: "100%", height: "100%", 
             objectFit: "cover", 
-            opacity: 0.2, 
+            opacity: 0.1, 
             zIndex: 0 
           }} 
         />
@@ -65,87 +70,75 @@ export const Home = () => {
             display: "flex", 
             alignItems: "center", 
             width: "100%", 
-            padding: "0 5%" 
+            marginLeft:"4rem",
+          
           }}
         >
           {/* Left Text Side */}
           <div className="text-container" style={{ flex: 1 }}>
             <div style={{ 
               backgroundColor: "#b3390023", 
-              color: "#ff5100", 
+              color: "#ff7b00", 
               padding: "8px 16px", 
-              border: "1px solid #ff5100", 
+              border: "1px solid #ff91009a", 
               borderRadius: "20px", 
-              fontWeight: "bold", 
+              fontWeight:"bold", 
               display: "inline-block", 
-              marginBottom: "15px" 
+              fontSize:"0.9rem",
+              marginBottom:"1.2rem"
             }}>
-
-
-
-              
-
-
               Government Certified AIS 140 Devices
             </div>
 
-            <h1>
+            <h1 style={{ fontWeight:"bolder",lineHeight: "1.0",margin:"0",marginBottom:"5px",fontSize: "3.6rem",}}>
             <span className="hero-h1" style={{ 
-              color: "white", 
-              fontSize: "3rem", 
-              lineHeight: "1.1", 
-              margin: 0 }}
+              color: "white" }}
               >AIS140 GPS Tracker for</span>
 
             <span className="hero-h1" 
-            style={{ color: "white", 
-            fontSize: "3rem", 
-            lineHeight: "1.1", 
-            margin: 0 }}></span>
+            style={{ color: "white",  
+             }}></span>
             <span className="hero-h1" 
-            style={{ color: "#f04e03", 
-            fontSize: "3rem", 
-            lineHeight: "1.1", 
-            margin: 0 }}
+            style={{ color: "#f07503", marginRight:"20px" }}
             > Government-Compliant</span>
 
             <span className="hero-h1" 
-            style={{ color: "white", 
-            fontSize: "3rem", 
-            lineHeight: "1.1", 
-            margin: 0 }}
+            style={{ color: "white"}}
             >Vehicle Tracking</span>
             </h1>
              
 
             <p className="hero-p" 
             style={{ color: "#ffffffb2", 
-            fontSize: "1.1rem", 
+            fontSize: "1.3rem", 
             margin: "20px 0", 
-            maxWidth: "500px" }}>
+            marginBottom:"2rem",
+            maxWidth: "900px", }}>
               Ensure AIS140 compliance with a reliable GPS tracking solution designed for public transport, commercial fleets, and regulated vehicles.
             </p>
 
-            <div className="btn-group" style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
-              <button style={{ backgroundColor: "#ff5100", color: "white", padding: "15px 30px", border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "18px", fontWeight: "bold" }}>
+            <div className="btn-group" style={{ display: "flex", marginBottom:"2.5rem", gap: "15px", flexWrap: "wrap" }}>
+              <button style={{ backgroundColor: "#ff7b00", color: "white", padding: "15px 30px", border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "18px", fontWeight: "bold" }}>
                 View AIS 140 Devices
               </button>
               <button style={{ backgroundColor: "#55555531", color: "white", padding: "15px 30px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", fontSize: "18px" }}>
                 Talk to Expert
               </button>
             </div>
+            <div style={{ backgroundColor: "#a0a0a04f", height: "0.1px" }}></div>
+            
 
-            <div className="stats-bar" style={{ display: "flex", gap: "30px", marginTop: "40px", alignItems: "center" }}>
+            <div className="stats-bar" style={{ display: "flex", gap: "30px", marginTop: "40px",marginBottom:"1rem", alignItems: "center" }}>
               <div style={{ textAlign: "center" }}>
                 <h2 style={{ color: "#ff5100", margin: 0 }}>500+</h2>
                 <small style={{ color: "white" }}>Fleet Partners</small>
               </div>
-              <div style={{ color: "#ffffff6c", fontSize: "1.5rem" }}>|</div>
+              <div style={{ color: "#ffffff6c", fontSize: "1.4rem" }}>|</div>
               <div style={{ textAlign: "center" }}>
                 <h2 style={{ color: "#ff5100", margin: 0 }}>50K+</h2>
                 <small style={{ color: "white" }}>Devices Installed</small>
               </div>
-              <div style={{ color: "#ffffff6c", fontSize: "1.5rem" }}>|</div>
+              <div style={{ color: "#ffffff6c", fontSize: "1.4rem" }}>|</div>
               <div style={{ textAlign: "center" }}>
                 <h2 style={{ color: "#ff5100", margin: 0 }}>99.9%</h2>
                 <small style={{ color: "white" }}>Uptime</small>
@@ -154,14 +147,15 @@ export const Home = () => {
           </div>
 
           {/* Right Image Side */}
-          <div className="image-container" style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          <div className="image-container" style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}>
             <img 
               src={gps1} 
               alt="GPS" 
               style={{ 
                 width: "85%", 
-                maxWidth: "450px", 
-                animation: "floatBeat 4s ease-in-out infinite", 
+                maxWidth: "100%",
+                transform: "translate(140px, 310px)",
+                animation: "floatBeat 8s ease-in-out infinite", 
                 filter: "drop-shadow(0 0 15px #ff9305e0)" 
               }} 
             />
@@ -169,6 +163,7 @@ export const Home = () => {
 
         </div>
       </section>
+    </div>
     </>
   );
 };

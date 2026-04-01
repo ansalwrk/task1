@@ -1,5 +1,5 @@
 
-import {   Check , X }from 'lucide-react';
+import {   Eye,Check , X,Clock,CardSim,User,Car     }from 'lucide-react';
 
 export const Screen2 = () => {  
   return (
@@ -9,13 +9,13 @@ export const Screen2 = () => {
 <div
         style={{  overflow: "hidden",  backgroundColor: "#292929"  }}
         >
-    <div style={{  display: "flex",    justifyContent: "center",    padding: "40px"   }}
+    <div style={{  display: "flex",    justifyContent: "center", marginTop:"40px",      }}
     >
           <button 
-          style={{  alignContent:"center",    backgroundColor: "#ff070723",   color: "#ff1504",       padding: "1px 12px",
-              fontSize: "13px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff5100",}}
+          style={{  alignContent:"center",    backgroundColor: "#ff07072c",   color: "#ff3737ef",       padding: "2px 15px",
+              fontSize: "1px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff51002a",}}
                    >
-          <h6>⚠︎ Common Challenges</h6> </button>
+          <h6 style={{fontSize:"13px"}}>⚠︎ Common Challenges</h6> </button>
     </div>
     
 
@@ -25,13 +25,13 @@ style={{
     flexDirection: "column", // Stacks items vertically
     alignItems: "center",    // Centers items horizontally
     textAlign: "center",     // Centers the text itself
-    padding: "20px",         // Added some breathing room
-    gap: "10px"              // Modern way to add space between the H2 and P
+    padding: "20px",         // Added some breathing rooM
+    marginTop:"-10px"              // Modern way to add space between the H2 and P
   }}
 >
-  <h2      style={{color:"white"}}       >Challenges Without AIS140 Tracking</h2>
+  <h2      style={{color:"white",fontSize:"2.2rem",fontWeight:"bolder"}}       >Challenges Without AIS140 Tracking</h2>
   
-  <h6 style={{color:"#c0c0c0e7"}}>  Operating vehicles without proper tracking leads to compliance issues and safety risks.       </h6>
+  <h6 style={{color:"#c0c0c0e7", fontWeight:"normal" ,marginBottom:"10px", fontSize:"1.1rem"}}>  Operating vehicles without proper tracking leads to compliance issues and safety risks.       </h6>
   
   </div>
 
@@ -45,7 +45,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X size={30} color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff00002c",}}><X size={30} color="#ff0000d2" /></div>
        <h4  style={{color:"white"}}> Without AIS140</h4><br/>
     </div>
 
@@ -56,7 +56,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><Eye size={18} color="#ff0000b7" /></div>
        <h6  style={{color:"#ffffff9c"}}>No real-time visibility of vehicle location</h6>
     </div>
 
@@ -67,7 +67,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><Clock size={18} color="#ff0000b7" /></div>
        <h6  style={{color:"#ffffff9c"}}>Delayed response during emergencies or accidents</h6>
     </div>
 
@@ -78,7 +78,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><CardSim size={18} color="#ff0000b7" /></div>
        <h6  style={{color:"#ffffff9c"}}>Difficulty meeting government compliance requirements</h6>
     </div>
 
@@ -90,7 +90,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><User size={18} color="#ff0000b7" /></div>
        <h6  style={{color:"#ffffff9c"}}>Poor monitoring of driver behavior</h6>
     </div>
 
@@ -101,7 +101,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#b60d0d4b", color: "#ff0000", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><X  color="#ff0000" /></div>
+    borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff0000",}}><Car size={18} color="#ff0000b7" /></div>
        <h6  style={{color:"#ffffff9c"}}> Limited control over vehicle misuse or unauthorized movement</h6>
     </div>
 
@@ -128,7 +128,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
        
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "5px 10px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check size={30} color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "normal", border: "1px solid #00ff0d1c",}}><Check size={30} color="#37ff00" /></div>
        <h4  style={{color:"white"}}> Without AIS140</h4><br/>
     </div>
 
@@ -137,7 +137,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "lighter", border: "1px solid #00ff0d1c",}}><Check size={18} color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Real-time visibility of all vehicles 24/7</h6>
     </div>
 
@@ -145,7 +145,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "normal", border: "1px solid #00ff0d1c",}}><Check size={18} color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Instant emergency alerts and SOS response</h6>
     </div>    
 
@@ -155,7 +155,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "normal", border: "1px solid #00ff0d1c",}}><Check size={18} color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Full government compliance guaranteed</h6>
     </div>
 
@@ -164,7 +164,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0d", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "normal", border: "1px solid #00ff0d1c",}}><Check size={18} color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Complete driver behavior monitoring</h6>
     </div>
 
@@ -173,7 +173,7 @@ style={{
       border: "1px solid #00000000", display: "flex",  alignItems: "center", gap: "15px",  }} >
         
       <div style={{    backgroundColor: "#21b60d4b", color: "#00ff0df5", padding: "6px 12px", fontSize: "13px",
-    borderRadius: "12px", fontWeight: "bold", border: "1px solid #00ff0d1c",}}><Check color="#37ff00" /></div>
+    borderRadius: "12px", fontWeight: "normal", border: "1px solid #00ff0d1c",}}><Check size={18} color="#37ff00" /></div>
        <h6  style={{color:"white"}}>Full control with geofencing and route tracking</h6>
     </div>
 
@@ -189,20 +189,27 @@ style={{
     alignItems: "center",    // Centers items horizontally
     textAlign: "center",     // Centers the text itself
     padding: "20px",         // Added some breathing room
-    gap: "10px"              // Modern way to add space between the H2 and P
+    gap: "10px",  
+    marginBottom:"20px"            // Modern way to add space between the H2 and P
   }}
 >
- <p style={{color:"#c9c9c9",fontWeight:"bold"}}>An AIS140 vehicle tracking system continuously transmits vehicle data, triggers instant alerts, and maintains logs required for compliance and operational control.</p>
+ <p style={{color:"#c9c9c9be",fontWeight:"normal", fontSize:"1.1rem"}}>An AIS140 vehicle tracking system continuously transmits vehicle data, triggers instant alerts, and maintains logs required for compliance and operational<br/> control.</p>
 
 </div>
 </div>
+
+
+
+
+
+
 <div style={{backgroundColor:"#000000"}}>
 
 
     <div style={{  display: "flex",    justifyContent: "center",    padding: "40px"   }}>
          <button style={{  alignContent:"center",    backgroundColor: "#ff73003b",   color: "#fd7302",       padding: "1px 12px",
               fontSize: "13px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff5100",}}>
-          <>. Key Features</> </button>
+          <>  Key Features</> </button>
     </div>
     
 
@@ -211,17 +218,15 @@ style={{
     display: "flex",
     flexDirection: "column", // Stacks items vertically
     alignItems: "center",    
-    textAlign: "center",     
-    padding: "20px",         
+    textAlign: "center",            
     gap: "10px"              
   }}
 >
   <h1      style={{color:"white", fontSize:"50px"}}       >AIS 140 GPS Tracker – Key Features</h1>
   
-  <h6 style={{color:"#c0c0c0e7"}}>  Comprehensive tracking capabilities designed for compliance and operational excellence.       </h6>
+  <h6 style={{color:"#777777e7",}}>  Comprehensive tracking capabilities designed for compliance and operational excellence.       </h6>
   
   </div>
-
 </div>
 </>
   );
