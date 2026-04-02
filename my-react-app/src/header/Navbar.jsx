@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import gpsLogo from "../assets/gps.png";
-import {PhoneCall,  }from 'lucide-react';
+import {Phone ,  }from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,8 +60,9 @@ export const Navbar = () => {
   // Shared button style to reduce code clutter
   const baseBtnStyle = {
     background: "transparent",
-    color: "white",
+    color: "#ecececd2",
     border: "none",
+    fontWeight:"bold",
     fontSize: "14px",
     cursor: "pointer",
     padding: "8px 12px",
@@ -74,6 +75,7 @@ export const Navbar = () => {
     gap: "15px",
     listStyle: "none",
     alignItems: "center",
+    justifyContent:"center",
     margin: 0,
     padding: 0,
   };
@@ -194,7 +196,7 @@ export const Navbar = () => {
           justifyContent: "space-between", // Added: space between logo and menu
           zIndex: 1000,
           padding: "0 68px",
-          borderBottomColor:"#ffffff",
+          borderBottom:"0.1px solid #a1a1a150",
           boxSizing: "border-box",
         }}
       >
@@ -235,7 +237,7 @@ export const Navbar = () => {
             />
           ))}
         </div>
-
+      
         {/* Navigation Links - Right Side */}
         <ul
           className="nav-links"
@@ -250,11 +252,16 @@ export const Navbar = () => {
 
 
 
-
+<div className="felx flex px-20 gap-2">
 
           <li>
             <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              Features
+              What is AIS140?
+            </button>
+          </li>
+          <li>
+            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
+             Features
             </button>
           </li>
           <li>
@@ -267,11 +274,27 @@ export const Navbar = () => {
               Industries
             </button>
           </li>
+
           <li>
             <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
               Devices
             </button>
           </li>
+
+          <li>
+            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
+              Pricing
+            </button>
+          </li>
+          
+          </div>
+
+
+
+
+
+
+
           <li>
             <button
               className="nav-btn"
@@ -290,7 +313,7 @@ export const Navbar = () => {
 
 
               
-                <PhoneCall color="#ff8800" />
+                <Phone size={19} />
               +91 9876543210
             </button>
           </li>
@@ -298,7 +321,7 @@ export const Navbar = () => {
             <button
               className="contact-btn"
               style={{
-                backgroundColor: "#e24800",
+                backgroundColor: "#f97015",
                 color: "white",
                 border: "none",
                 padding: "10px 22px",

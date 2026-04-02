@@ -12,9 +12,9 @@ return  (
 
 
 
-    <div style={{  display: "flex",    justifyContent: "center",    padding: "40px"   }}>
+    <div style={{  display: "flex",    justifyContent: "center",    padding: "100px 0px 0px 0px"   }}>
          <button style={{  alignContent:"center",    backgroundColor: "#ff73003b",   color: "#fd7302",       padding: "1px 12px",
-              fontSize: "13px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff5100",}}>
+              fontSize: "12px",         borderRadius: "20px",            fontWeight: "bold",      border: "1px solid #ff510036",}}>
           <>Our Devices</> </button>
     </div>
 
@@ -28,8 +28,8 @@ style={{
     gap: "10px"              
   }}
 >
-  <h5     style={{color:"white", fontSize:"40px"}}       >AIS 140 Device Types – 2G & 4G</h5>
-  <h5 style={{color:"#c0c0c0e7"}}>Choose the right device based on your coverage needs and deployment scale. </h5>
+  <h5     style={{color:"white", fontSize:"35px"}}       >AIS 140 Device Types – 2G & 4G</h5>
+  <h5 style={{color:"#c0c0c0e7",marginBottom:"20px", fontSize:"19px",fontWeight:"lighter"}}>Choose the right device based on your coverage needs and deployment scale. </h5>
   
   </div>
 
@@ -39,7 +39,7 @@ style={{
 
 
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-10 mx-4 md:mx-16">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-10 mx-10 md:mx-16">
 
 
 
@@ -78,7 +78,8 @@ style={{
             alignItems:"center",
             justifyContent:"center",
             zIndex: 0, 
-            borderRadius:"30px"
+            borderRadius:"30px",
+            marginTop:"-20px"
           }} 
         />
         </center>
@@ -130,7 +131,7 @@ style={{
 
 
 
-       <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center md:items-start">
+       <div className="flex flex-col md:flex-row gap-2 md:gap-8 items-center md:items-start">
         
           
 
@@ -170,7 +171,8 @@ style={{
             alignItems:"center",
             justifyContent:"center",
             zIndex: 0, 
-            borderRadius:"30px"
+            borderRadius:"30px",
+            marginTop:"-20px"
           }} 
         />
         </center>

@@ -65,9 +65,9 @@ export const Screen5 = () => {
       <div className='all' style={{ overflow: "hidden", backgroundColor: "#1b1b1b" }}>
 
         <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
-          <button style={{ alignContent: "center", backgroundColor: "#ff73003b", color: "#fd7302", padding: "1px 12px",
+          <button style={{ alignContent: "center", backgroundColor: "#ff73003b", color: "#fd7302", padding: "6px 16px",
               fontSize: "13px", borderRadius: "20px", fontWeight: "bold", border: "1px solid #ff5100", }}>
-            <>.    Industry Solutions</> </button>
+            <>Industry Solutions</> </button>
         </div>
 
         <div className="screen2head"
@@ -76,16 +76,15 @@ export const Screen5 = () => {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            padding: "20px",
-            gap: "10px"
+            marginBottom:"40px"
           }}
         >
           <h1 style={{ color: "white", fontSize: "50px" }}>Who Needs an AIS140 GPS Tracker?</h1>
           <h6 style={{ color: "#c0c0c0e7" }}> AIS140 is mandatory for various commercial and public transport categories across India. </h6>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 md:mx-12 lg:mx-16">
-          <div className="grid gap-y-2 mr-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 pl-10  mx-4 md:mx-12 lg:mx-16">
+          <div className="grid gap-y-2 ">
             {cardsData.map((card) => (
               <div 
                 key={card.id} 
@@ -97,28 +96,28 @@ export const Screen5 = () => {
                 <div style={{ 
                   backgroundColor: "#000000", 
                   padding: "5px", 
-                  borderRadius: "20px",
+                  borderRadius: "10px",
                   border: "1px solid #504e4e", 
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "space-between",
                   gap: "15px",
                   transition: "all 0.3s ease",
-                  ...(activeCardId === card.id && { border: "1px solid #ff8800", backgroundColor: "#ff730010" })
+                  ...(activeCardId === card.id && { border: "1px solid #99999900", backgroundColor: "#ff7300" })
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-                    <div style={{ backgroundColor: "#b9630096", color: "#ff8800", padding: "6px 12px", fontSize: "20px",
-                        borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800", }}>
-                      <card.icon />
+                    <div style={{ backgroundColor: "#ff88003f", color: "#ff7300", padding: "6px 12px", fontSize: "20px",
+                        borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff88000c", }}>
+                      <card.icon style={{color:"white"}} >       </card.icon>
                     </div>
                     <div>
-                      <h4 style={{ color: "white", fontSize: "20px" }}>{card.title}</h4>
-                      <p style={{ color: "white", fontSize: "14px" }}>{card.description}</p>
+                      <h4 style={{ color: "white", fontSize: "16px" }}>{card.title}</h4>
+                      <p style={{ color: "#cacaca", fontSize: "14px" }}>{card.description}</p>
                     </div>
                   </div>
                   {(hoveredCardId === card.id || activeCardId === card.id) && (
                     <div style={{ marginRight: "15px" }}>
-                      <ArrowRight size={30} color="#af5e12" />
+                      <ArrowRight size={20} color="#ffffff" />
                     </div>
                   )}
                 </div>
@@ -133,7 +132,7 @@ export const Screen5 = () => {
                 <div style={{ backgroundColor: "#ff7b00", display: "flex",
                     color: "#ffffff", justifyContent: "center", alignItems: "center", width: "85px", height: "80px",
                     borderRadius: "12px", fontWeight: "bold", border: "1px solid #ff8800" }}>
-                  <selectedCard.icon size={70} />
+                  <selectedCard.icon size={50} />
                 </div>
                 <div style={{ width: "100%" }}>
                   <h4 style={{ color: "white", fontSize: "30px", fontWeight: "bolder", margin: 0, padding: 0, lineHeight: "1.2" }}>{selectedCard.title}</h4>

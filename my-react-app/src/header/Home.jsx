@@ -80,7 +80,7 @@ export const Home = () => {
               backgroundColor: "#b3390023", 
               color: "#ff7b00", 
               padding: "8px 16px", 
-              border: "1px solid #ff91009a", 
+              border: "1px solid #5c2c0d", 
               borderRadius: "20px", 
               fontWeight:"bold", 
               display: "inline-block", 
