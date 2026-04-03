@@ -77,20 +77,21 @@ export const Home = () => {
           {/* Left Text Side */}
           <div className="text-container" style={{ flex: 1 }}>
             <div style={{ 
-              backgroundColor: "#b3390023", 
-              color: "#ff7b00", 
+              backgroundColor: "#F970151A", 
+              color: "#F97015", 
               padding: "8px 16px", 
               border: "1px solid #5c2c0d", 
               borderRadius: "20px", 
-              fontWeight:"bold", 
+              fontWeight:"lighter", 
               display: "inline-block", 
-              fontSize:"0.9rem",
-              marginBottom:"1.2rem"
+              fontSize:"16px",
+              marginBottom:"1.2rem",
+              fontFamily: "Inter, system-ui, sans-serif"
             }}>
               Government Certified AIS 140 Devices
             </div>
 
-            <h1 style={{ fontWeight:"bolder",lineHeight: "1.0",margin:"0",marginBottom:"5px",fontSize: "3.6rem",}}>
+            <h1 style={{ fontWeight:"bolder",lineHeight: "1.0",margin:"0",marginBottom:"5px",fontSize: "60px",fontStyle:"Poppins,Inter,system-ui,sans-serif"}}>
             <span className="hero-h1" style={{ 
               color: "white" }}
               >AIS140 GPS Tracker for</span>
@@ -110,38 +111,39 @@ export const Home = () => {
 
             <p className="hero-p" 
             style={{ color: "#ffffffb2", 
-            fontSize: "1.3rem", 
+            fontSize: "20.8px", 
             margin: "20px 0", 
             marginBottom:"2rem",
+            fontStyle:"ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
             maxWidth: "900px", }}>
               Ensure AIS140 compliance with a reliable GPS tracking solution designed for public transport, commercial fleets, and regulated vehicles.
             </p>
 
             <div className="btn-group" style={{ display: "flex", marginBottom:"2.5rem", gap: "15px", flexWrap: "wrap" }}>
-              <button style={{ backgroundColor: "#ff7b00", color: "white", padding: "15px 30px", border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "18px", fontWeight: "bold" }}>
+              <button style={{ backgroundColor: "#f97015", color: "white", padding: "15px 30px", border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "18px", fontWeight: "bold" }}>
                 View AIS 140 Devices
               </button>
-              <button style={{ backgroundColor: "#55555531", color: "white", padding: "15px 30px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", fontSize: "18px" }}>
+              <button style={{ backgroundColor: "#160d0a", color: "white", padding: "15px 30px", border: "1px solid white", borderRadius: "10px", cursor: "pointer", fontSize: "18px", }}>
                 Talk to Expert
               </button>
             </div>
             <div style={{ backgroundColor: "#a0a0a04f", height: "0.1px" }}></div>
             
 
-            <div className="stats-bar" style={{ display: "flex", gap: "30px", marginTop: "40px",marginBottom:"1rem", alignItems: "center" }}>
+            <div className="stats-bar" style={{ display: "flex", gap: "30px",fontWeight:"bolder", marginTop: "40px",marginBottom:"1rem", alignItems: "center" , fontStyle:"ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji"}}>
               <div style={{ textAlign: "center" }}>
-                <h2 style={{ color: "#ff5100", margin: 0 }}>500+</h2>
-                <small style={{ color: "white" }}>Fleet Partners</small>
+                <h2 style={{ color: "#f97015", margin: 0 }}>500+</h2>
+                <small style={{ color: "#8e8e8e" }}>Fleet Partners</small>
               </div>
               <div style={{ color: "#ffffff6c", fontSize: "1.4rem" }}>|</div>
               <div style={{ textAlign: "center" }}>
-                <h2 style={{ color: "#ff5100", margin: 0 }}>50K+</h2>
-                <small style={{ color: "white" }}>Devices Installed</small>
+                <h2 style={{ color: "#f97015", margin: 0 }}>50K+</h2>
+                <small style={{ color: "#8e8e8e" }}>Devices Installed</small>
               </div>
               <div style={{ color: "#ffffff6c", fontSize: "1.4rem" }}>|</div>
               <div style={{ textAlign: "center" }}>
-                <h2 style={{ color: "#ff5100", margin: 0 }}>99.9%</h2>
-                <small style={{ color: "white" }}>Uptime</small>
+                <h2 style={{ color: "#f97015", margin: 0 }}>99.9%</h2>
+                <small style={{ color: "#8e8e8e" }}>Uptime</small>
               </div>
             </div>
           </div>

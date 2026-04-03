@@ -252,7 +252,7 @@ export const Navbar = () => {
 
 
 
-<div className="felx flex px-20 gap-2">
+<div className="felx flex px-20 gap-2" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
 
           <li>
             <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
@@ -304,15 +304,10 @@ export const Navbar = () => {
                 alignItems: "center",
                 gap: "8px",
                 fontWeight: "bold",
+                 fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
               }}
               onClick={handleNavClick}
-            >
-
-
-
-
-
-              
+            >             
                 <Phone size={19} />
               +91 9876543210
             </button>

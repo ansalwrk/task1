@@ -499,32 +499,32 @@ export const Screen3 = () => {
             onClick={prevCard}
             className="nav-button"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "48px",
+              height: "48px",
               borderRadius: "50%",
               color: "white",
-              backgroundColor: "#ff730021",
+              backgroundColor: "#22140b",
               cursor: "pointer",
               transition: "all 0.3s ease",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              borderColor: "#c55900c0",
+              borderColor: "#4a250d",
               borderWidth: "2px",
               borderStyle: "solid",
             }}
           >
-            <ArrowLeft size={24} />
+            <ArrowLeft size={24} color="#e76814" />
           </button>
 
           <button
             onClick={nextCard}
             className="nav-button"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "48px",
+              height: "48px",
               borderRadius: "50%",
-              backgroundColor: "#ff730021",
+              backgroundColor: "#22140b",
               color: "white",
               border: "none",
               cursor: "pointer",
@@ -532,12 +532,12 @@ export const Screen3 = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              borderColor: "#c55900c0",
+              borderColor: "#4a250d",
               borderWidth: "2px",
               borderStyle: "solid",
             }}
           >
-            <ArrowRight size={24} />
+            <ArrowRight size={24} color="#e76814" />
           </button>
         </div>
       </div>

@@ -9,7 +9,7 @@ export const Screen1 = () => {
     height: "45px",
     borderRadius: "50%",
     border: "none",
-    backgroundColor: "#ff5100",
+    backgroundColor: "#f97015",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
@@ -28,7 +28,7 @@ export const Screen1 = () => {
   };
 
   const featureCardStyle = {
-    backgroundColor: "#64646441",
+    backgroundColor: "#262626",
     padding: "15px",
     borderRadius: "10px",
     border: "1px solid #222",
@@ -40,9 +40,9 @@ export const Screen1 = () => {
   const numberBadgeStyle = {
     backgroundColor: "#b3390023",
     color: "#ff5100",
-    padding: "2px 11px",
+    padding: "9px 9px",
     fontSize: "12px",
-    borderRadius: "12px",
+    borderRadius: "8px",
     fontWeight: "bold",
     border: "1px solid #d39b2213",
   };
@@ -134,26 +134,26 @@ export const Screen1 = () => {
           {/* Features Grid */}
           <div class="grid grid-cols-1 md:grid-cols-2 pb-5 gap-3"  
           
-          style={{  color: "white", margin: "0",  }}>
+          style={{  color: "#dddddd", margin: "0",  }}>
 
             <div style={featureCardStyle}>
-              <div style={numberBadgeStyle}><Satellite size={20} color="#ff6600" /></div>
-              <h6 style={{ fontSize:"0.9rem",fontWeight:"bolder"}}>Real-time GPS Tracking</h6>
+              <div style={numberBadgeStyle}><Satellite size={20} color="#f97015" /></div>
+              <h6 style={{ fontSize:"15px",fontstyle:"Inter,system-ui,sans-serif",fontWeight:"bold"}}>Real-time GPS Tracking</h6>
             </div>
 
             <div style={featureCardStyle}>
-              <div style={numberBadgeStyle}><Shield size={20} color="#ff6600"/></div>
-              <h6 style={{ fontSize:"0.9rem",fontWeight:"bolder"}}>Emergency SOS Alerts</h6>
+              <div style={numberBadgeStyle}><Shield size={20} color="#f97015"/></div>
+              <h6 style={{ fontSize:"15px",fontstyle:"Inter,system-ui,sans-serif",fontWeight:"bold"}}>Emergency SOS Alerts</h6>
             </div>
 
             <div style={featureCardStyle}>
-              <div style={numberBadgeStyle}><BetweenHorizontalStart size={20} color="#ff6600"/></div>
-              <h6 style={{ fontSize:"0.9rem",fontWeight:"bolder"}}>Secure Data Transmission</h6>
+              <div style={numberBadgeStyle}><BetweenHorizontalStart size={20} color="#f97015"/></div>
+              <h6 style={{ fontSize:"15px",fontstyle:"Inter,system-ui,sans-serif",fontWeight:"bold"}}>Secure Data Transmission</h6>
             </div>
 
             <div style={featureCardStyle}>
-              <div style={numberBadgeStyle}><Laptop size={20} color="#ff6600" /></div>
-              <h6 style={{ fontSize:"0.9rem",fontWeight:"bolder"}}>Compliance Reporting</h6>
+              <div style={numberBadgeStyle}><Laptop size={20} color="#f97015" /></div>
+              <h6 style={{ fontSize:"15px",fontstyle:"Inter,system-ui,sans-serif",fontWeight:"bold"}}>Compliance Reporting</h6>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ export const Screen1 = () => {
         <div style={{ flex: "1", minWidth: "300px", display: "flex", justifyContent: "center" }}>
           <div
             style={{
-              backgroundColor: "#111111",
+              backgroundColor: "#262626",
               padding: "30px",
               marginBottom:"0rem",
               borderRadius: "28px",
@@ -186,19 +186,19 @@ export const Screen1 = () => {
             <div style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>1</button>
-                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Vehicle</p>
+                <p style={{ color: "#a6a69a", fontSize: "12px", margin: 0 }}>Vehicle</p>
               </div>
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>2</button>
-                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>GPS Device</p>
+                <p style={{ color: "#a6a69a", fontSize: "12px", margin: 0 }}>GPS Device</p>
               </div>
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>3</button>
-                <p style={{ color: "white", fontSize: "11px", margin: 0, textAlign: "center" }}>Cloud Server</p>
+                <p style={{ color: "#a6a69a", fontSize: "12px", margin: 0, textAlign: "center" }}>Cloud Server</p>
               </div>
               <div style={columnStyle}>
                 <button style={circleButtonStyle}>4</button>
-                <p style={{ color: "white", fontSize: "11px", margin: 0 }}>Dashboard</p>
+                <p style={{ color: "#a6a69a", fontSize: "12px", margin: 0 }}>Dashboard</p>
                 <br/>
 
               </div>
