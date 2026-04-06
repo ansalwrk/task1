@@ -48,6 +48,7 @@ export const Screen1 = () => {
   };
 
   return (
+    <section id='What is AIS140'>
     <div
       style={{
         backgroundColor: "#000000",
@@ -207,5 +208,6 @@ export const Screen1 = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };

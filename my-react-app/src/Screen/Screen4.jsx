@@ -3,7 +3,7 @@ import screen4 from "../assets/screen4img.png";
 
 export const Screen4 = () => {
   return (
-    <>
+    <section id="Benefits">
       <div style={{ backgroundColor: "#080400" }}>
         <div style={{ paddingBottom: "4rem", marginTop: "-6rem" }}>
           <div
@@ -257,6 +257,6 @@ export const Screen4 = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };

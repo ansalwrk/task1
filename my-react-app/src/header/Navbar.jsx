@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import gpsLogo from "../assets/gps.png";
 import {Phone ,  }from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,7 @@ export const Navbar = () => {
       setIsOpen(false);
     }
   };
+  
 
   // Toggle menu only on mobile
   const toggleMenu = () => {
@@ -254,40 +256,54 @@ export const Navbar = () => {
 
 <div className="felx flex px-20 gap-2" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
 
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              What is AIS140?
-            </button>
-          </li>
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-             Features
-            </button>
-          </li>
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              Benefits
-            </button>
-          </li>
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              Industries
-            </button>
-          </li>
+<a href="#What is AIS140" 
 
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              Devices
-            </button>
-          </li>
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      
+  What is AIS140 ?</a>
 
-          <li>
-            <button className="nav-btn" style={baseBtnStyle} onClick={handleNavClick}>
-              Pricing
-            </button>
-          </li>
-          
-          </div>
+
+
+
+<a href="#Features"  
+
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      Features</a>
+
+<a href="#Benefits"  
+
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      Benefits</a>
+
+<a href="#Industries"  
+
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      Industries </a>
+
+<a href="#Devices"  
+
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      Devices</a>
+
+<a href="#Pricing"  
+
+style={{ background: "transparent", color: "#ecececd2",
+    border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
+    padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
+      Pricing</a>
+
+
+</div>
 
 
 

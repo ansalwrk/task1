@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bus, Van, Car, FlaskConical, Building2, ArrowRight } from 'lucide-react';
+import { Bus, Van, Car, FlaskConical, Building2, ArrowRight, Section } from 'lucide-react';
 
 export const Screen5 = () => {
   const [selectedCard, setSelectedCard] = useState({
@@ -61,7 +61,7 @@ export const Screen5 = () => {
   };
 
   return (
-    <>
+    <section id ="Industries">
       <div className='all' style={{ overflow: "hidden", backgroundColor: "#2e2925" }}>
 
         <div style={{ display: "flex", justifyContent: "center", padding: "40px" }}>
@@ -197,6 +197,6 @@ export const Screen5 = () => {
         <br/>
         <br/>
       </div>
-    </>
+    </section>
   );
 };

@@ -392,6 +392,8 @@ export const Screen3 = () => {
   };
 
   return (
+    
+    <section id ="Features">
     <div className="pl-16 pr-16 " style={{ backgroundColor: "#000000" }}>
       <div style={{ backgroundColor: "#000000", minHeight: "80vh" }}>
         <div
@@ -411,6 +413,7 @@ export const Screen3 = () => {
             WebkitOverflowScrolling: "touch",
           }}
         >
+          
           {clonedCards.map((card, index) => {
             const IconComponent = card.icon;
             const isActive = currentCardIndex === index % cards.length;
@@ -451,7 +454,8 @@ export const Screen3 = () => {
                 >
                   <IconComponent size={30} color="#ffffff" />
                 </div>
-
+                
+                
                 <h1
                   className="card-title"
                   style={{
@@ -577,5 +581,6 @@ export const Screen3 = () => {
         }
       `}</style>
     </div>
+    </section>
   );
 };
