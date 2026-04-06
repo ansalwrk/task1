@@ -251,7 +251,8 @@ export const Screen4 = () => {
                       marginTop: "6rem",
                     }}
                   />
-                </div>
+                </div>    <section id ="Industries"></section>
+
               </div>
             </div>
           </div>

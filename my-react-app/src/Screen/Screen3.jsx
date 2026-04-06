@@ -393,7 +393,7 @@ export const Screen3 = () => {
 
   return (
     
-    <section id ="Features">
+
     <div className="pl-16 pr-16 " style={{ backgroundColor: "#000000" }}>
       <div style={{ backgroundColor: "#000000", minHeight: "80vh" }}>
         <div
@@ -581,6 +581,5 @@ export const Screen3 = () => {
         }
       `}</style>
     </div>
-    </section>
   );
 };

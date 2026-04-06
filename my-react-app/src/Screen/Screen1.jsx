@@ -48,7 +48,8 @@ export const Screen1 = () => {
   };
 
   return (
-    <section id='What is AIS140'>
+    
+    
     <div
       style={{
         backgroundColor: "#000000",
@@ -62,6 +63,8 @@ export const Screen1 = () => {
         fontFamily: "Helvetica, Arial, sans-serif",
       }}
     >
+
+      
       <div
         style={{
           display: "flex",
@@ -92,6 +95,7 @@ export const Screen1 = () => {
           >
             <i class="bi bi-shield"></i> <Shield size={20} color="#ff5100" style={{ marginRight:"10px"}}/> Government Mandate
           </button>
+          
 
           <h1
             style={{
@@ -183,6 +187,7 @@ export const Screen1 = () => {
                 marginBottom: "30px",
               }}
             />
+          
 
             <div style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
               <div style={columnStyle}>
@@ -208,6 +213,6 @@ export const Screen1 = () => {
         </div>
       </div>
     </div>
-    </section>
+    
   );
 };

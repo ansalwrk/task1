@@ -82,9 +82,9 @@ export const Home = () => {
               padding: "8px 16px", 
               border: "1px solid #5c2c0d", 
               borderRadius: "20px", 
-              fontWeight:"lighter", 
+              fontWeight:"500", 
               display: "inline-block", 
-              fontSize:"16px",
+              fontSize:"14px",
               marginBottom:"1.2rem",
               fontFamily: "Inter, system-ui, sans-serif"
             }}>
@@ -147,6 +147,7 @@ export const Home = () => {
               </div>
             </div>
           </div>
+          
 
           {/* Right Image Side */}
           <div className="image-container" style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}>
@@ -160,12 +161,14 @@ export const Home = () => {
                 animation: "floatBeat 8s ease-in-out infinite", 
                 filter: "drop-shadow(0 0 15px #ff9305e0)" 
               }} 
-            />
+            /><section id='What is AIS140'></section>
           </div>
 
         </div>
+        
       </section>
     </div>
+    
     </>
   );
 };

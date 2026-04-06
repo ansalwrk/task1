@@ -227,7 +227,7 @@ export const Screen2 = () => {
           </p>
         </div>
       </div>
-
+<section id ="Features"></section>
       <div style={{ backgroundColor: "#000000", padding: "20px 0 40px 0" }}>
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
           <button
@@ -265,6 +265,7 @@ export const Screen2 = () => {
           </h6>
         </div>
       </div>
+      
     </>
   );
 };

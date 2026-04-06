@@ -106,6 +106,17 @@ export const Navbar = () => {
             box-sizing: border-box;
           }
 
+
+
+          /* HOVER FOR REDIRECT */
+          .redct:hover { color: #ec7718 !important; background-color: #5e5d5d63 !important; 
+          border-radius: 10px !important;  }
+          
+          
+
+
+
+
           /* Hover & Active States */
           .nav-btn:hover { color: #ec7718 !important; }
           .contact-btn:hover { background-color: #ff5a00 !important; }
@@ -256,8 +267,9 @@ export const Navbar = () => {
 
 <div className="felx flex px-20 gap-2" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
 
-<a href="#What is AIS140" 
-
+<a className="redct"
+                        
+               href="#What is AIS140" 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
     padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
@@ -267,35 +279,35 @@ style={{ background: "transparent", color: "#ecececd2",
 
 
 
-<a href="#Features"  
+<a className="redct" href="#Features"  
 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
     padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
       Features</a>
 
-<a href="#Benefits"  
+<a className="redct" href="#Benefits"  
 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
     padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
       Benefits</a>
 
-<a href="#Industries"  
+<a className="redct"  href="#Industries"  
 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
     padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
       Industries </a>
 
-<a href="#Devices"  
+<a className="redct" href="#Devices"  
 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
     padding: "8px 12px", transition: "0.3s",  textDecoration:"none"}}>
       Devices</a>
 
-<a href="#Pricing"  
+<a className="redct" href="#Pricing"  
 
 style={{ background: "transparent", color: "#ecececd2",
     border: "none", fontWeight:"bold", fontSize: "14px", cursor: "pointer",
